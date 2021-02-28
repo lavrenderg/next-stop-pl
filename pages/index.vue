@@ -7,16 +7,6 @@
     <p>Date</p>
     <textarea v-model="date_pickup" placeholder="Pickup"></textarea>
     <textarea v-model="date_return" placeholder="Return"></textarea>
+    <v-btn>=></v-btn>
   </div>
 </template>
-
-<script>
-export default {
-  /*head() {
-    return {
-      script: [{ src: 'https://identity.netlify.com/v1/netlify-identity-widget.js' }],
-    }
-  },*/
-  css: ['@~/assets/css/_custom.pcss'],
-}
-</script>

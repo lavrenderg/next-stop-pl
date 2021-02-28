@@ -1,14 +1,14 @@
 <template>
-  <nav class="">
-    <ul class="flex fixed top-0 inset-x-0 p-3">
-      <li class="flex-1 mr-2">
-        <nuxt-link class="btn block" to="/">Home</nuxt-link>
+  <nav>
+    <ul>
+      <li>
+        <v-btn icon>more</v-btn>
       </li>
-      <li class="flex-1 mr-2">
-        <nuxt-link class="btn block" to="/blog">Blog</nuxt-link>
+      <li>
+        <p>NextStop</p>
       </li>
-      <li class="flex-1">
-        <nuxt-link class="btn block" to="/projects">Projects</nuxt-link>
+      <li>
+        <v-btn icon>EN</v-btn>
       </li>
     </ul>
   </nav>
@@ -16,23 +16,6 @@
 
 <script>
 export default {
-  name: 'Header'
+  name: 'Header',
 }
 </script>
-
-<style lang="postcss" scoped>
-.nuxt-link-exact-active {
-  @apply text-accent-100 bg-accent bg-opacity-20;
-  &:hover {
-    @apply text-white bg-accent-600;
-  }
-}
-.light-mode {
-  & .nuxt-link-exact-active {
-    @apply text-accent-600;
-    &:hover {
-      @apply text-white;
-    }
-  }
-}
-</style>
