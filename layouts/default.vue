@@ -1,6 +1,7 @@
 <template>
   <div class="container">
-    <Header />
+    <Menu v-show="showMenu" />
+    <Header @showMenu="showMenu = !showMenu" />
     <ColorModePicker />
     <nuxt />
   </div>
@@ -9,11 +10,18 @@
 <script>
 import Header from '~/components/general/Header.vue'
 import ColorModePicker from '~/components/general/ColorModePicker.vue'
+import Menu from '~/components/general/Menu.vue'
 
 export default {
   components: {
+    Menu,
     Header,
-    ColorModePicker
-  }
+    ColorModePicker,
+  },
+  data() {
+    return {
+      showMenu: false,
+    }
+  },
 }
 </script>

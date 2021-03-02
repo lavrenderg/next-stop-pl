@@ -2,16 +2,16 @@
   <nav>
     <ul>
       <li>
-        <p>Our locations</p>
+        <NuxtLink to="/">Our locations</NuxtLink>
       </li>
       <li>
-        <p>Rent a car</p>
+        <NuxtLink to="/">Rent a car</NuxtLink>
       </li>
       <li>
-        <p>Constact</p>
+        <NuxtLink to="/">Constact</NuxtLink>
       </li>
       <li>
-        <p>Sign in/out</p>
+        <NuxtLink to="/">Sign in/out</NuxtLink>
       </li>
     </ul>
   </nav>

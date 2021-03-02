@@ -2,7 +2,7 @@
   <nav>
     <ul>
       <li>
-        <v-btn icon>more</v-btn>
+        <v-btn icon @click="showMenu">more</v-btn>
       </li>
       <li>
         <p>NextStop</p>
@@ -17,5 +17,10 @@
 <script>
 export default {
   name: 'Header',
+  methods: {
+    showMenu() {
+      this.$emit('showMenu')
+    },
+  },
 }
 </script>
