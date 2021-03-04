@@ -13,13 +13,13 @@
     <div class="car_examples_slider">
       <splide :options="options">
         <splide-slide>
-          <img src="image1.jpg" />
+          <img src="~/static/img/car1.jpg" />
         </splide-slide>
         <splide-slide>
-          <img src="image2.jpg" />
+          <img src="~/static/img/car2.jpg" />
         </splide-slide>
         <splide-slide>
-          <img src="image3.jpg" />
+          <img src="~/static/img/car3.jpg" />
         </splide-slide>
       </splide>
     </div>
