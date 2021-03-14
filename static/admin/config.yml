@@ -50,7 +50,8 @@ collections:
       - { label: 'Description', name: 'description', widget: 'string' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
 
-  - name: 'Cars'
+  - name: 'cars'
+    label: 'Cars'
     folder: 'assets/content/cars'
     create: true
     format: 'json'
