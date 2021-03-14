@@ -37,8 +37,11 @@ export default {
     return {
       options: {
         rewind: true,
-        width: 800,
-        gap: '1rem',
+        gap: '2rem',
+        perPage: 2,
+        fixedWidth: '15rem',
+        fixedHeight: '15rem',
+        cover: true,
       },
     }
   },

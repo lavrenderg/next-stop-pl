@@ -50,8 +50,8 @@ collections:
       - { label: 'Description', name: 'description', widget: 'string' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
 
-  - name: 'cars'
-    label: 'Cars'
+  - name: 'car'
+    label: 'Car'
     folder: 'assets/content/cars'
     create: true
     format: 'json'
@@ -63,7 +63,7 @@ collections:
          options: ['A','B','C','D','E','F']
       }
       - {label: 'Price', name: 'price', widget: 'number', value_type: 'float'}
-      - {label: 'Img', name: 'img', widget: 'image'}
+      - {label: 'Image', name: 'img', widget: 'image'}
 
 
   - name: 'projects'
