@@ -12,14 +12,9 @@
     </div>
     <div class="car_examples_slider">
       <splide :options="options">
-        <splide-slide>
-          <img src="~/static/img/car1.jpg" />
-        </splide-slide>
-        <splide-slide>
-          <img src="~/static/img/car2.jpg" />
-        </splide-slide>
-        <splide-slide>
-          <img src="~/static/img/car3.jpg" />
+        <splide-slide v-for="(carPost, index) in carPosts" :key="index">
+          <img :src="carPost.img" />
+          <h1>{{ carPost.model }}</h1>
         </splide-slide>
       </splide>
     </div>
@@ -38,12 +33,17 @@ export default {
       options: {
         rewind: true,
         gap: '2rem',
-        perPage: 2,
+        perPage: 5,
         fixedWidth: '15rem',
         fixedHeight: '15rem',
         cover: true,
       },
     }
+  },
+  computed: {
+    carPosts() {
+      return this.$store.state.carPosts
+    },
   },
 }
 </script>
