@@ -64,7 +64,6 @@ collections:
          options: ['A','B','C','D','E','F']
       }
       - {label: 'Price', name: 'price', widget: 'number', value_type: 'float'}
-      - {label: 'Availability', name: 'available', widget: 'date'}
       - {label: 'Image', name: 'img', widget: 'image'}
 
 
