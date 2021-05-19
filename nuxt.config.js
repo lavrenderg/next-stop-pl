@@ -66,6 +66,8 @@ export default {
      ** Nuxt.js dev-modules
      */
     buildModules: ['@nuxtjs/color-mode', '@nuxtjs/svg', '@nuxtjs/pwa', '@nuxtjs/vuetify'],
+
+    modules: ['@nuxtjs/axios', '@nuxtjs/auth'],
     /*
      ** Nuxt.js modules
      */
@@ -108,6 +110,22 @@ export default {
             lang: process.env.lang,
             ogHost: process.env.URL,
             ogImage: '/ogp.jpg'
+        }
+    },
+    axios: {
+        baseURL: 'http://localhost:8000/api'
+    },
+    auth: {
+        strategies: {
+            local: {
+                token: {
+                    required: false,
+                    type: false
+                },
+                endpoints: {
+                    logout: { url: '/logout', method: 'post', credentials: 'include' }
+                },
+            }
         }
     }
 }

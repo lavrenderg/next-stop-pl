@@ -56,6 +56,7 @@ collections:
     create: true
     format: 'json'
     fields: 
+      - {label: 'Brand', name: 'brand', widget: 'string'}
       - {label: 'Model', name: 'model', widget: 'string'}
       - {label: 'Segment', 
          name: 'segment', 
