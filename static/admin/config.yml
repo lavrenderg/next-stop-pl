@@ -56,6 +56,8 @@ collections:
     folder: 'assets/content/reservations'
     create: true
     format: 'json'
+    slug: '{{startDate}}-{{endDate}}--{{carModel}}'
+    preview_path: 'projects/{{slug}}'
     fields:
       - {label: 'Start date', name: 'startDate', widget: 'date'}
       - {label: 'End date', name: 'endDate', widget: 'date'}
