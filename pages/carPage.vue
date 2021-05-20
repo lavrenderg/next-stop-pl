@@ -75,6 +75,7 @@
           <p>{{ carPost.model }}</p>
           <p>Segment : {{ carPost.segment }}</p>
           <p>Price starts from {{ carPost.price }}$</p>
+          <v-btn text>Reserve now</v-btn>
         </v-card>
       </div>
     </v-container>
