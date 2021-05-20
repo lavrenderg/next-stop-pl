@@ -61,6 +61,10 @@ collections:
       - {label: 'End date', name: 'endDate', widget: 'date'}
       - {label: 'Client email', name: 'email', widget: 'string'}
       - {label: 'Car model', name: 'carModel', widget: 'string'}
+      - {label: 'Reservation status', 
+          name: 'status', 
+          widget: 'select', 
+          options: ['New', 'Confirmed']}
 
   - name: 'car'
     label: 'Car'
