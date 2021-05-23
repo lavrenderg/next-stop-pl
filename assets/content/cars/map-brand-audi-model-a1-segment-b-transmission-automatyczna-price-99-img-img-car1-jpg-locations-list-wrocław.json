@@ -1,10 +1,13 @@
 {
-  "brand": "Audi",
-  "model": "A1",
-  "segment": "B",
-  "transmission": "Automatyczna",
-  "price": 99,
   "img": "/img/car1.jpg",
+  "transmission": "Automatyczna",
+  "brand": "Audi",
+  "price": 99,
+  "model": "A1",
+  "trunkCapacity": 508,
+  "seats": 4,
+  "segment": "B",
+  "engineType": "Benzyna",
   "locations": [
     "Wrocław"
   ]
