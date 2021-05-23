@@ -8,8 +8,6 @@ import { COLOR_MODE_FALLBACK } from './utils/globals.js'
 
 const dynamicContentPath = 'assets/content' // ? No prepending/appending backslashes here
 const dynamicRoutes = getDynamicPaths({
-        blog: 'blog/*.json',
-        projects: 'projects/*.json',
         cars: 'cars/*.json'
     },
     dynamicContentPath

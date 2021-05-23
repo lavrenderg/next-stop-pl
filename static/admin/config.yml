@@ -82,6 +82,9 @@ collections:
          options: ['A','B','C','D','E','F']
       }
       - {label: 'Skrzynia biegów', name: 'transmission', widget: 'select', options: ['Automatyczna', 'Manualna']}
+      - {label: 'Rodzaj silnika', name: 'engineType', widget: 'select', options: ['Benzyna', 'Diesel', 'Elektryczny', 'Hybryda']}
+      - {label: 'Liczba miejsc', name: 'seats', widget: 'number', value_type: 'int'}
+      - {label: 'Pojemność bagażnika', name: 'trunkCapacity', widget: 'number', value_type: 'int'}
       - {label: 'Cena', name: 'price', widget: 'number', value_type: 'float'}
       - {label: 'Zdjęcie', name: 'img', widget: 'image'}
       - {label: 'Lokalizacje', name: 'locations', widget: 'list', summary: '{{fields.location}}', field: {label: 'Lokalizacja', name: 'location', widget: 'string'}}
