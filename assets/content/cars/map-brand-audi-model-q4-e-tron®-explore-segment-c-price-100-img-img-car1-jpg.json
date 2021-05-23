@@ -1,7 +1,8 @@
 {
   "brand": "Audi",
-  "model": "Q4 e-tron® Explore",
+  "model": "Q4 e-tron Explore",
   "segment": "C",
   "price": 100,
-  "img": "/img/car1.jpg"
+  "img": "/img/car1.jpg",
+  "transmission": "Automatyczna"
 }
