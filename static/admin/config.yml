@@ -81,6 +81,7 @@ collections:
          widget: 'select',
          options: ['A','B','C','D','E','F']
       }
+      - {label: 'Skrzynia biegów', name: 'transmission', widget: 'select', options: ['Automatyczna', 'Manualna']}
       - {label: 'Cena', name: 'price', widget: 'number', value_type: 'float'}
       - {label: 'Zdjęcie', name: 'img', widget: 'image'}
       - {label: 'Lokalizacje', name: 'locations', widget: 'list', summary: '{{fields.location}}', field: {label: 'Lokalizacja', name: 'location', widget: 'string'}}
