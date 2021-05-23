@@ -1,0 +1,11 @@
+{
+  "brand": "Audi",
+  "model": "A1",
+  "segment": "B",
+  "transmission": "Automatyczna",
+  "price": 99,
+  "img": "/img/car1.jpg",
+  "locations": [
+    "Wrocław"
+  ]
+}
