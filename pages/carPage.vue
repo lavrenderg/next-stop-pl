@@ -1,68 +1,77 @@
 <template>
   <v-app>
-    <v-container>
-      <input type="text" v-model="searchInput" placeholder="search cars" />
-
+    <v-container class="background container">
       <v-row>
-        <v-col><v-btn @click="showModels = !showModels" text>Select car model</v-btn> </v-col>
-        <v-col><v-btn @click="showSegments = !showSegments" text>Select car segment</v-btn> </v-col>
+        <v-col><v-btn @click="showModels = !showModels" color="#def2f1">Zaznacz model aut</v-btn> </v-col>
+        <v-col><v-btn @click="showSegments = !showSegments" color="#def2f1">Zaznacz segment aut</v-btn> </v-col>
         <v-col
           ><v-text-field
+            class="price_btn"
             type="number"
-            label="Set minimum price"
-            placeholder="Min price"
+            label="Wpisz minimalną ceną"
+            placeholder="Cena min"
             v-model="price.minPrice"
-            solo
+            outlined
+            dense
           ></v-text-field
         ></v-col>
         <v-col
           ><v-text-field
+            class="price_btn"
             type="number"
-            label="Set maximum price"
-            placeholder="Max price"
+            label="Wpisz maksymalną cenę"
+            placeholder="Cena max"
             v-model="price.maxPrice"
-            solo
+            outlined
+            dense
           ></v-text-field
         ></v-col>
         <v-col
           ><v-select
+            class="sort_select"
             :items="sort.sortByItems"
-            label="Sort by"
+            label="Sortowanie"
             v-model="sort.sortBy"
             :value="sort.sortByItems"
+            dense
           ></v-select
         ></v-col>
       </v-row>
-      <v-row>
-        <v-card v-if="showModels" outlined>
-          <v-row>
-            <v-checkbox
-              v-for="(carModel, index) in carModels"
-              :key="index"
-              :value="carModel"
-              v-model="selectedModels"
-              :label="carModel"
-            >
-              <v-col></v-col
-            ></v-checkbox>
-          </v-row>
-        </v-card>
-      </v-row>
-      <v-row>
-        <v-card v-if="showSegments" outlined>
-          <v-row>
-            <v-checkbox
-              v-for="(carSegment, index) in carSegments"
-              :key="index"
-              :value="carSegment"
-              v-model="selectedSegments"
-              :label="carSegment"
-            >
-              <v-col></v-col
-            ></v-checkbox>
-          </v-row>
-        </v-card>
-      </v-row>
+      <div class="show_models_segment">
+        <v-row>
+          <v-card class="models_card" v-if="showModels" outlined>
+            <v-row>
+              <v-checkbox
+                class="checkbox"
+                v-for="(carModel, index) in carModels"
+                :key="index"
+                :value="carModel"
+                v-model="selectedModels"
+                :label="carModel"
+              >
+                <v-col></v-col
+              ></v-checkbox>
+            </v-row>
+          </v-card>
+        </v-row>
+        <v-row>
+          <v-card class="segment_card" v-if="showSegments && !showModels" outlined>
+            <v-row>
+              <v-checkbox
+                class="checkbox"
+                v-for="(carSegment, index) in carSegments"
+                :key="index"
+                :value="carSegment"
+                v-model="selectedSegments"
+                :label="carSegment"
+              >
+                <v-col></v-col
+              ></v-checkbox>
+            </v-row>
+          </v-card>
+        </v-row>
+      </div>
+      <v-text-field height="20px" class="car_search" type="text" v-model="searchInput" placeholder="Wyszukaj auta" />
       <div class="car_table">
         <v-card
           elevation="9"

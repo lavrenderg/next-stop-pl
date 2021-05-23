@@ -74,15 +74,16 @@ collections:
     create: true
     format: 'json'
     fields: 
-      - {label: 'Brand', name: 'brand', widget: 'string'}
+      - {label: 'Producent', name: 'brand', widget: 'string'}
       - {label: 'Model', name: 'model', widget: 'string'}
       - {label: 'Segment', 
          name: 'segment', 
          widget: 'select',
          options: ['A','B','C','D','E','F']
       }
-      - {label: 'Price', name: 'price', widget: 'number', value_type: 'float'}
-      - {label: 'Image', name: 'img', widget: 'image'}
+      - {label: 'Cena', name: 'price', widget: 'number', value_type: 'float'}
+      - {label: 'Zdjęcie', name: 'img', widget: 'image'}
+      - {label: 'Lokalizacje', name: 'locations', widget: 'list', summary: '{{fields.location}}', field: {label: 'Lokalizacja', name: 'location', widget: 'string'}}
 
 
   - name: 'projects'

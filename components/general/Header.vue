@@ -1,17 +1,19 @@
 <template>
-  <nav>
-    <ul>
-      <li>
-        <v-btn icon @click="showMenu">more</v-btn>
-      </li>
-      <li>
-        <p>NextStop</p>
-      </li>
-      <li>
-        <v-btn icon>EN</v-btn>
-      </li>
-    </ul>
-  </nav>
+  <div class="header">
+    <v-btn
+      class="show_menu_btn"
+      height="110px"
+      width="110px
+    "
+      color="#57ba98"
+      tile
+      elevation="0"
+      @click="showMenu"
+      >Menu
+    </v-btn>
+    <img class="header_img" src="@/static/img/buildings.png" />
+    <h2 class="header_text">Wynajem samochodów we Wrocławiu</h2>
+  </div>
 </template>
 
 <script>

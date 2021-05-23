@@ -1,22 +1,22 @@
 <template>
-  <div class="container">
-    <Menu v-show="showMenu" />
+  <div>
+    <Menu v-show="showMenu" @showMenu="showMenu = !showMenu" />
     <Header @showMenu="showMenu = !showMenu" />
-    <ColorModePicker />
     <nuxt />
+    <Footer />
   </div>
 </template>
 
 <script>
 import Header from '~/components/general/Header.vue'
-import ColorModePicker from '~/components/general/ColorModePicker.vue'
 import Menu from '~/components/general/Menu.vue'
+import Footer from '~/components/general/Footer.vue'
 
 export default {
   components: {
     Menu,
     Header,
-    ColorModePicker,
+    Footer,
   },
   data() {
     return {
