@@ -11,6 +11,10 @@
       @click="showMenu"
       >Menu
     </v-btn>
+    <v-btn class="main_page_btn" height="110px" width="110px" to="/" color="#57ba98" tile elevation="0"
+      >Główna<br />
+      strona
+    </v-btn>
     <img class="header_img" src="@/static/img/buildings.png" />
     <h2 class="header_text">Wynajem samochodów we Wrocławiu</h2>
   </div>

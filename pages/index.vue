@@ -31,6 +31,55 @@
         </splide-slide>
       </splide>
     </div>
+    <v-divider> </v-divider>
+    <div class="locations_div" id="locations_div">
+      <v-row>
+        <v-col class="location_branch">
+          <div>
+            <h4>Oddział Nr 1</h4>
+            <br />
+            <p>ul. Graniczna, 159</p>
+            <p>54-530, Wrocław</p>
+          </div>
+        </v-col>
+        <v-col class="location_branch">
+          <div>
+            <h4>Oddział Nr 2</h4>
+            <br />
+            <p>ul. Ceglana, 3</p>
+            <p>50-002, Wrocław</p>
+          </div>
+        </v-col>
+        <v-col class="location_branch">
+          <div>
+            <h4>Oddział Nr 3</h4>
+            <br />
+            <p>ul. Komandorska, 53</p>
+            <p>53-342, Wrocław</p>
+          </div>
+        </v-col>
+        <v-col class="contact">
+          <div>
+            <h4>Kontakt</h4>
+            <br />
+            <p>+48 576 201 166</p>
+            <p>Maryna</p>
+          </div>
+        </v-col>
+      </v-row>
+      <v-row>
+        <div>
+          <v-btn
+            class="google_maps_btn"
+            rounded
+            text
+            href="https://www.google.com/maps/@51.1098223,17.0069192,12z/data=!3m1!4b1!4m3!11m2!2sMb1L1ARZgXESyLeQ2fxxkZa_9aRmBg!3e3"
+            target="_blank"
+            >Otwórz w GoogleMaps</v-btn
+          >
+        </div>
+      </v-row>
+    </div>
   </div>
 </template>
 

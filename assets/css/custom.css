@@ -83,10 +83,18 @@
     height: 100%;
 }
 
+.main_page_btn {
+    position: absolute;
+    left: 110px;
+    top: 0px;
+    height: 100%;
+}
+
 .header_text {
     position: absolute;
     top: 40px;
-    left: 250px;
+    left: 300px;
+    font-weight: 100;
 }
 
 .quick_reservation {
@@ -176,11 +184,65 @@
     margin-right: 20px;
 }
 
-.car_description {
-    display: inline-block;
-    margin: 10px;
-}
-
 .container {
     padding-top: 50px;
+}
+
+.car_details_card {
+    position: fixed;
+    z-index: 10;
+    top: 25%;
+    left: 33%;
+    width: fit-content;
+}
+
+.car_description-text {
+    display: inline;
+}
+
+.details_img {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.car_details_icon {
+    height: 22px;
+}
+
+.car_details_background_div {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    opacity: 60%;
+}
+
+.car_description {
+    display: inline-block;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.locations_div {
+    height: 160px;
+    margin-left: 300px;
+    margin-right: 300px;
+    margin-top: 20px;
+}
+
+.location_branch {
+    margin-right: 15px;
+    margin-left: 15px;
+    max-width: 300px;
+}
+
+.google_maps_btn {
+    position: absolute;
+    left: 550px;
+    right: 550px;
+    margin-top: 10px;
+    background-color: #ffffff;
+    opacity: 70%;
 }

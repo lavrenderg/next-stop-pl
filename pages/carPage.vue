@@ -81,19 +81,40 @@
           :key="index"
         >
           <v-img :src="carPost.img" max-height="100" max-width="200"></v-img>
-          <p>{{ carPost.model }}</p>
-          <p>Segment : {{ carPost.segment }}</p>
-          <p>Price starts from {{ carPost.price }}$</p>
-          <v-btn text>Reserve now</v-btn>
+          <p>{{ carPost.brand }} {{ car.model }}</p>
+          <p>Segment: {{ carPost.segment }}</p>
+          <p>Cena: od {{ carPost.price }} zł</p>
+          <v-btn text @click="showCarDetails(carPost)">Pokaż szczegóły</v-btn>
         </v-card>
       </div>
+      <div
+        class="car_details_background_div"
+        :style="{ 'background-color': backgroundColor, 'z-index': backgroundZindex }"
+        @click="closeCarDetails"
+      ></div>
+      <CarDetails
+        class="car_details_card"
+        v-if="showCarDetailsBool"
+        :img="car.img"
+        :brand="car.brand"
+        :model="car.model"
+        :transmission="car.transmission"
+        :engine="car.engine"
+        :seats="car.seats"
+        :trunkCapacity="car.trunkCapacity"
+        :price="car.price"
+      />
     </v-container>
   </v-app>
 </template>
 
 
 <script>
+import CarDetails from '@/components/general/CarDetails.vue'
 export default {
+  components: {
+    CarDetails,
+  },
   head() {
     return {
       script: { src: 'https://identity.netlify.com/v1/netlify-identity-widget.js' },
@@ -114,6 +135,20 @@ export default {
         sortByItems: ['Lowest price', 'Highest price', 'Segment', 'Brand [A-Z]', 'Brand [Z-A]'],
         sortBy: '',
       },
+      showCarDetailsBool: false,
+      car: {
+        img: '',
+        brand: '',
+        model: '',
+        transmission: '',
+        engine: '',
+        seats: '',
+        trunkCapacity: '',
+        price: '',
+      },
+      backgroundColor: '',
+      backgroundOpacity: 0,
+      backgroundZindex: -1,
     }
   },
   computed: {
@@ -179,6 +214,26 @@ export default {
       }
       let unique = [...new Set(tab)]
       return unique.sort()
+    },
+  },
+  methods: {
+    showCarDetails(carPost) {
+      this.showCarDetailsBool = true
+      this.car.img = carPost.img
+      this.car.brand = carPost.brand
+      this.car.model = carPost.model
+      this.car.transmission = carPost.transmission
+      this.car.engine = carPost.engineType
+      this.car.seats = carPost.seats
+      this.car.trunkCapacity = carPost.trunkCapacity
+      this.car.price = carPost.price
+      this.backgroundColor = '#ffffff'
+      this.backgroundZindex = 3
+    },
+    closeCarDetails() {
+      this.showCarDetailsBool = false
+      this.backgroundColor = ''
+      this.backgroundZindex = -1
     },
   },
 }
