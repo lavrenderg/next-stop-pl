@@ -2,10 +2,10 @@
   "img": "/img/car2.jpg",
   "transmission": "Manualna",
   "brand": "Honda",
-  "price": 73,
+  "price": 75,
   "model": "Brio",
   "trunkCapacity": 400,
-  "seats": 4,
+  "seats": 5,
   "segment": "C",
   "engineType": "Diesel"
 }
