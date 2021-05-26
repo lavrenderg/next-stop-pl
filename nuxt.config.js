@@ -65,7 +65,31 @@ export default {
      */
     buildModules: ['@nuxtjs/color-mode', '@nuxtjs/svg', '@nuxtjs/pwa', '@nuxtjs/vuetify'],
 
-    modules: ['@nuxtjs/axios', '@nuxtjs/auth'],
+    modules: ['@nuxtjs/axios', '@nuxtjs/auth', '@nuxtjs/firebase'],
+
+    firebase: {
+        config: {
+            apiKey: "AIzaSyCn3MoNd89V4l4_D2g8mvg4JQjavbUArcA",
+            authDomain: "nextstop-57593.firebaseapp.com",
+            databaseURL: "https://nextstop-57593-default-rtdb.europe-west1.firebasedatabase.app",
+            projectId: "nextstop-57593",
+            storageBucket: "nextstop-57593.appspot.com",
+            messagingSenderId: "836771449749",
+            appId: "1:836771449749:web:824c1894117d17c54bc49c",
+            measurementId: "G-CPVYBN7CEE"
+        },
+        services: {
+            auth: {
+                persistence: 'local',
+                initialize: {
+                    onAuthStateChangedAction: 'onAuthStateChangedAction',
+                    subscribeManually: false
+                },
+                ssr: false,
+            },
+            database: true,
+        }
+    },
     /*
      ** Nuxt.js modules
      */

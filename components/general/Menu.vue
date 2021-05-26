@@ -16,9 +16,9 @@
       </div>
     </div>
     <v-row class="login_buttons">
-      <div v-if="$auth.loggedIn">
+      <div v-if="this.$fire.auth.currentUser != null">
         <v-btn text>My reservations</v-btn>
-        <v-btn v-on:click="logout" text>Logout</v-btn>
+        <v-btn @click="logout" text>Logout</v-btn>
       </div>
       <div v-else>
         <v-btn text to="/register">Rejestracja</v-btn>
@@ -31,13 +31,13 @@
 <script>
 export default {
   methods: {
-    async logout() {
-      await this.$auth.setUser()
-    },
-  },
-  methods: {
     showMenu() {
       this.$emit('showMenu')
+    },
+    logout() {
+      $nuxt.$fire.auth.signOut()
+      this.$forceUpdate()
+      this.$router.push('/login')
     },
   },
 }

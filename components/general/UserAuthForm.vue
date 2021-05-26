@@ -1,25 +1,33 @@
 <template>
-  <v-form v-model="valid">
-    <v-text-field v-model="userInfo.name" label="Name" :rules="[required('name')]" v-if="hasName" />
+  <v-form v-model="valid" class="auth_form">
+    <v-text-field v-model="userInfo.name" label="Imię" :rules="[required('name')]" v-if="hasName" />
 
     <v-text-field v-model="userInfo.email" label="Email" :rules="[required('email'), emailFormat()]" />
 
     <v-text-field
       v-model="userInfo.password"
-      label="Password"
+      label="Hasło"
       :type="showPassword ? 'text' : 'password'"
       :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
       @click:append="showPassword = !showPassword"
       counter="true"
-      :rules="[required('password'), minLength('password', 8)]"
+      :rules="[required('Hasło'), minLength('Hasło', 8)]"
     />
 
     <v-text-field
-      v-model="userInfo.phone"
-      label="PhoneNumber"
-      :rules="[required('Phone number'), phoneNumberFormat()]"
+      v-model="userInfo.phoneNumber"
+      label="Numer telefonu"
+      :rules="[required('Numer telefonu'), phoneNumberFormat()]"
       counter="true"
       v-if="hasPhoneNumber"
+    />
+
+    <v-text-field
+      v-model="userInfo.age"
+      label="Wiek"
+      :rules="[required('Wiek'), minAge()]"
+      counter="true"
+      v-if="hasAge"
     />
 
     <v-btn @click="submitForm(userInfo)" :disabled="!valid">{{ buttonText }}</v-btn>
@@ -38,10 +46,11 @@ export default {
         email: '',
         password: '',
         phoneNumber: '',
+        age: '',
       },
       ...validation,
     }
   },
-  props: ['submitForm', 'buttonText', 'hasName', 'hasPhoneNumber'],
+  props: ['submitForm', 'buttonText', 'hasName', 'hasPhoneNumber', 'hasAge'],
 }
 </script>

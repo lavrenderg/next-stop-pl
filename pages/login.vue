@@ -3,6 +3,7 @@
     <h1>Login</h1>
 
     <UserAuthForm buttonText="Login" :submitForm="loginUser" />
+    <p class="error" v-if="showError">{{ errMessage }}</p>
   </v-container>
 </template>
 
@@ -10,26 +11,25 @@
 import UserAuthForm from '@/components/general/UserAuthForm'
 
 export default {
+  data() {
+    return {
+      errMessage: '',
+      showError: false,
+    }
+  },
   components: {
     UserAuthForm,
   },
   methods: {
     async loginUser(loginDetails) {
-      await fetch('http://localhost:8000/api/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        credentials: 'include',
-        body: JSON.stringify({
-          email: loginDetails.email,
-          password: loginDetails.password,
-        }),
+      let that = this
+      this.$fire.auth.signInWithEmailAndPassword(loginDetails.email, loginDetails.password).catch(function (error) {
+        that.showError = true
+        that.errMessage = error.message
       })
-      const responce = await fetch('http://localhost:8000/api/user', {
-        headers: { 'Content-Type': 'application/json' },
-        credentials: 'include',
-      })
-      const content = await responce.json()
-      this.$auth.setUser(content)
+
+      this.$forceUpdate()
+      this.$router.push('/')
     },
   },
 }

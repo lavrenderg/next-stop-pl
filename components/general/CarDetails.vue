@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-card>
+    <v-card class="car_reservation_div" v-if="showCarDetailsDiv">
       <v-row>
         <v-col class="details_img">
           <v-img max-height="200" max-width="500" class="car_details_img" :src="img" />
@@ -38,15 +38,42 @@
           <p class="car_description-text">{{ price }} zł/24 h</p>
         </v-col>
         <v-col>
-          <v-btn color="#57ba98">Rezerwuj</v-btn>
+          <v-btn @click="toggleCarDivWithReservation" color="#57ba98">Rezerwuj</v-btn>
         </v-col>
       </v-row>
+    </v-card>
+    <v-card class="car_reservation_div" v-if="showReservationFormDiv">
+      <p>Rezerwacja samochodu : {{ brand }} {{ model }}</p>
+      <UserAuthForm
+        buttonText="Potwierdź rezerwację"
+        hasName="true"
+        hasPhoneNumber="true"
+        hasAge="true"
+        :submitForm="reserveCar"
+      />
     </v-card>
   </div>
 </template>
 
 <script>
+import UserAuthForm from '@/components/general/UserAuthForm'
 export default {
+  components: {
+    UserAuthForm,
+  },
   props: ['img', 'brand', 'model', 'transmission', 'engine', 'seats', 'trunkCapacity', 'price'],
+  data() {
+    return {
+      showCarDetailsDiv: true,
+      showReservationFormDiv: false,
+    }
+  },
+  methods: {
+    toggleCarDivWithReservation() {
+      this.showCarDetailsDiv = false
+      this.showReservationFormDiv = true
+    },
+    reserveCar() {},
+  },
 }
 </script>

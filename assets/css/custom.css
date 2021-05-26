@@ -191,7 +191,7 @@
 .car_details_card {
     position: fixed;
     z-index: 10;
-    top: 25%;
+    top: 20%;
     left: 33%;
     width: fit-content;
 }
@@ -245,4 +245,15 @@
     margin-top: 10px;
     background-color: #ffffff;
     opacity: 70%;
+}
+
+.car_reservation_div {
+    max-width: 550px;
+    width: 550px;
+    padding: 20px;
+}
+
+.error {
+    color: red;
+    margin-top: 10px;
 }
