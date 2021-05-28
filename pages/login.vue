@@ -2,7 +2,7 @@
   <v-container>
     <h1>Login</h1>
 
-    <UserAuthForm buttonText="Login" :submitForm="loginUser" />
+    <UserAuthForm buttonText="Login" hasPassword="true" :submitForm="loginUser" />
     <p class="error" v-if="showError">{{ errMessage }}</p>
   </v-container>
 </template>
@@ -28,7 +28,7 @@ export default {
         that.errMessage = error.message
       })
 
-      this.$forceUpdate()
+      //this.$forceUpdate()
       this.$router.push('/')
     },
   },

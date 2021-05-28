@@ -15,16 +15,20 @@
         <img class="btn_img3" src="@/static/icons/contact.png" />
       </div>
     </div>
-    <v-row class="login_buttons">
-      <div v-if="this.$fire.auth.currentUser != null">
-        <v-btn text>My reservations</v-btn>
+    <div class="test">
+      <div>
+        <v-btn text to="/myReservations">My reservations</v-btn>
         <v-btn @click="logout" text>Logout</v-btn>
       </div>
-      <div v-else>
+      <div>
+        <v-btn text to="/reservations">Rezerwacje</v-btn>
+        <v-btn @click="logout" text>Logout</v-btn>
+      </div>
+      <div>
         <v-btn text to="/register">Rejestracja</v-btn>
         <v-btn text to="/login">Logowanie</v-btn>
       </div>
-    </v-row>
+    </div>
   </v-card>
 </template>
 
@@ -38,6 +42,17 @@ export default {
       $nuxt.$fire.auth.signOut()
       this.$forceUpdate()
       this.$router.push('/login')
+    },
+  },
+  computed: {
+    async adminIsLoggedIn() {
+      if (this.$fire.auth.currentUser) {
+        let ref = this.$fire.database.ref()
+        console.log('REF TO CHILD' + ref.child('Admins').child(this.$fire.auth.currentUser.uid))
+        return ref.child('Admins').child(this.$fire.auth.currentUser.uid) != null
+      } else {
+        return false
+      }
     },
   },
 }

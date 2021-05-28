@@ -7,6 +7,7 @@
       hasName="true"
       hasPhoneNumber="true"
       hasAge="true"
+      hasPassword="true"
       :submitForm="registerUser"
     />
 
@@ -49,7 +50,7 @@ export default {
         Phone: registerDetails.phoneNumber,
         Age: registerDetails.age,
       })
-
+      this.$forceUpdate()
       this.$router.push('/')
     },
   },

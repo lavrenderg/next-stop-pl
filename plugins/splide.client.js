@@ -4,6 +4,6 @@ import '@splidejs/splide/dist/css/themes/splide-default.min.css';
 
 Vue.use(VueSplide);
 new Vue({
-    el: '#app',
+    // el: '#app',
     render: h => h(App),
 });

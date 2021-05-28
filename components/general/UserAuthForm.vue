@@ -5,6 +5,7 @@
     <v-text-field v-model="userInfo.email" label="Email" :rules="[required('email'), emailFormat()]" />
 
     <v-text-field
+      v-if="hasPassword"
       v-model="userInfo.password"
       label="Hasło"
       :type="showPassword ? 'text' : 'password'"
@@ -51,6 +52,6 @@ export default {
       ...validation,
     }
   },
-  props: ['submitForm', 'buttonText', 'hasName', 'hasPhoneNumber', 'hasAge'],
+  props: ['submitForm', 'buttonText', 'hasName', 'hasPhoneNumber', 'hasAge', 'hasPassword'],
 }
 </script>

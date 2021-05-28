@@ -103,6 +103,8 @@
         :seats="car.seats"
         :trunkCapacity="car.trunkCapacity"
         :price="car.price"
+        :vin="car.vin"
+        :carLocations="car.carLocations"
       />
     </v-container>
   </v-app>
@@ -145,6 +147,8 @@ export default {
         seats: '',
         trunkCapacity: '',
         price: '',
+        vin: '',
+        carLocations: [],
       },
       backgroundColor: '',
       backgroundOpacity: 0,
@@ -227,6 +231,8 @@ export default {
       this.car.seats = carPost.seats
       this.car.trunkCapacity = carPost.trunkCapacity
       this.car.price = carPost.price
+      this.car.vin = carPost.vin
+      this.car.carLocations = carPost.locations
       this.backgroundColor = '#ffffff'
       this.backgroundZindex = 3
     },
