@@ -8,6 +8,7 @@
       <p>Data</p>
       <v-btn>=></v-btn>
     </v-card>
+
     <div class="car_examples_slider">
       <splide :options="options">
         <splide-slide v-for="(carPost, index) in carPosts" :key="index">
@@ -19,6 +20,7 @@
         </splide-slide>
       </splide>
     </div>
+
     <v-divider> </v-divider>
     <div class="locations_div" id="locations_div">
       <v-container>
@@ -57,16 +59,18 @@
           </v-col>
         </v-row>
         <v-row>
-          <div>
-            <v-btn
-              class="google_maps_btn"
-              rounded
-              text
-              href="https://www.google.com/maps/@51.1098223,17.0069192,12z/data=!3m1!4b1!4m3!11m2!2sMb1L1ARZgXESyLeQ2fxxkZa_9aRmBg!3e3"
-              target="_blank"
-              >Otwórz w GoogleMaps</v-btn
-            >
-          </div>
+          <v-col>
+            <div>
+              <v-btn
+                class="google_maps_btn"
+                rounded
+                text
+                href="https://www.google.com/maps/@51.1098223,17.0069192,12z/data=!3m1!4b1!4m3!11m2!2sMb1L1ARZgXESyLeQ2fxxkZa_9aRmBg!3e3"
+                target="_blank"
+                >Otwórz w GoogleMaps</v-btn
+              >
+            </div>
+          </v-col>
         </v-row>
       </v-container>
     </div>
@@ -77,7 +81,7 @@
 export default {
   head() {
     return {
-      // script: { src: 'https://identity.netlify.com/v1/netlify-identity-widget.js' },
+      //script: { src: 'https://identity.netlify.com/v1/netlify-identity-widget.js' },
     }
   },
   data() {

@@ -51,15 +51,17 @@ export default {
   methods: {
     getUserReservations() {
       this.reservations = []
-      let ref = this.$fire.database.ref('Reservations/')
-      ref
-        .orderByChild('UserId')
-        .equalTo(this.$fire.auth.currentUser.uid)
-        .on('value', (snapshot) => {
-          snapshot.forEach((childSnapshot) => {
-            this.reservations.push(childSnapshot)
+      if (this.$fire.auth.currentUser) {
+        let ref = this.$fire.database.ref('Reservations/')
+        ref
+          .orderByChild('UserId')
+          .equalTo(this.$fire.auth.currentUser.uid)
+          .on('value', (snapshot) => {
+            snapshot.forEach((childSnapshot) => {
+              this.reservations.push(childSnapshot)
+            })
           })
-        })
+      }
       console.log('computing..' + this.reservations.length)
     },
     carBrand(vin) {

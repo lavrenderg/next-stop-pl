@@ -3,7 +3,7 @@
 <script>
 export default {
   asyncData() {
-    firebase.auth().signOut()
+    this.$fire.auth.signOut()
   },
 }
 </script>
