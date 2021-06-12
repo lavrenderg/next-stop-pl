@@ -130,6 +130,10 @@
     max-width: 100%;
 }
 
+.v-application--wrap {
+    background-color: #def2f1;
+}
+
 .footer_img {
     height: 30px;
 }
