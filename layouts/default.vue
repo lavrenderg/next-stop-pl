@@ -1,7 +1,7 @@
 <template>
   <div>
-    <Menu v-show="showMenu" @showMenu="showMenu = !showMenu" />
-    <Header @showMenu="showMenu = !showMenu" />
+    <Menu v-show="showMenu" @closeMenu="showMenu = false" />
+    <Header @showMenu="showMenu = true" />
     <nuxt />
     <Footer />
   </div>

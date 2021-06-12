@@ -1,6 +1,6 @@
 <template>
   <v-card class="menu">
-    <v-btn class="back_btn" nuxt x-small @click="showMenu">Zamknij</v-btn>
+    <v-btn class="back_btn" nuxt x-small @click="closeMenu">Zamknij</v-btn>
     <div class="menu_buttons">
       <div class="btn_with_text1">
         <v-btn class="menu_btn1" nuxt small plain outlined href="/#locations_div">Nasze oddziały </v-btn>
@@ -35,13 +35,13 @@
 <script>
 export default {
   methods: {
-    showMenu() {
-      this.$emit('showMenu')
-    },
     logout() {
       $nuxt.$fire.auth.signOut()
       this.$forceUpdate()
       this.$router.push('/login')
+    },
+    closeMenu() {
+      this.$emit('closeMenu')
     },
   },
   computed: {

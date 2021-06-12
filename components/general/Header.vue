@@ -1,14 +1,6 @@
 <template>
   <div class="header">
-    <v-btn
-      class="show_menu_btn"
-      height="110px"
-      width="110px
-    "
-      color="#57ba98"
-      tile
-      elevation="0"
-      @click="showMenu"
+    <v-btn class="show_menu_btn" height="110px" width="110px" color="#57ba98" tile elevation="0" @click="showMenu"
       >Menu
     </v-btn>
     <v-btn class="main_page_btn" height="110px" width="110px" to="/" color="#57ba98" tile elevation="0"
