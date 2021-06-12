@@ -153,15 +153,9 @@
     padding-left: 100px;
 }
 
-.car_search {
-    margin-left: 25%;
-    margin-right: 25%;
-    width: 50%;
-    padding-bottom: 10px;
-}
-
 .show_models_segment {
     height: 50px;
+    margin-bottom: 20px;
 }
 
 .models_card,
@@ -330,4 +324,34 @@
 .test {
     position: absolute;
     bottom: 0px;
+}
+
+.add_new_admin_account {
+    position: absolute;
+    left: 50px;
+}
+
+.date_picker_menu1,
+.date_picker_menu2 {
+    width: 200px;
+    max-width: 200px;
+    margin-bottom: 100px;
+    position: absolute;
+    top: 190px;
+}
+
+.date_picker_menu1 {
+    right: 150px;
+}
+
+.date_picker_menu2 {
+    right: 400px;
+}
+
+.car_search {
+    margin-left: 25%;
+    margin-right: 25%;
+    width: 50%;
+    padding-bottom: 10px;
+    margin-top: 100px;
 }
