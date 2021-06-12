@@ -9,7 +9,6 @@ backend:
 media_folder: static/img
 public_folder: /img
 
-# Docs: https://www.netlifycms.org/docs/configuration-options/#collections
 collections:
   - label: 'Site settings'
     name: 'site'
@@ -21,20 +20,18 @@ collections:
         editor:
           preview: false
         fields:
-          - { label: Site Name, name: sitename, widget: string, hint: 'This is used for the site title' }
+          - { label: Site Name, name: sitename, widget: string }
           - {
               label: Site Description,
               name: sitedescription,
               widget: string,
-              hint: 'This is used as descriptive text for links that link to this site',
             }
           - {
               label: Site Language,
               name: sitelang,
               widget: string,
-              pattern: ['^[a-z]{2}([-])?([A-Za-z]{2})?$', 'Must match "xx" or "xx-XX" syntax (ex. "en" or "sv-SE")'],
+              pattern: ['^[a-z]{2}([-])?([A-Za-z]{2})?$'],
             }
-          # - { label: Site Email, name: siteemail, widget: string, required: false }
 
   - name: 'car'
     label: 'Car'
@@ -50,10 +47,30 @@ collections:
          widget: 'select',
          options: ['A','B','C','D','E','F']
       }
-      - {label: 'Skrzynia biegów', name: 'transmission', widget: 'select', options: ['Automatyczna', 'Manualna']}
-      - {label: 'Rodzaj silnika', name: 'engineType', widget: 'select', options: ['Benzyna', 'Diesel', 'Elektryczny', 'Hybryda']}
+      - {
+          label: 'Skrzynia biegów', 
+          name: 'transmission', 
+          widget: 'select', 
+          options: ['Automatyczna', 'Manualna']
+        }
+      - {
+          label: 'Rodzaj silnika', 
+          name: 'engineType',
+          widget: 'select', 
+          options: ['Benzyna', 'Diesel', 'Elektryczny', 'Hybryda']
+        }
       - {label: 'Liczba miejsc', name: 'seats', widget: 'number', value_type: 'int'}
       - {label: 'Pojemność bagażnika', name: 'trunkCapacity', widget: 'number', value_type: 'int'}
       - {label: 'Cena', name: 'price', widget: 'number', value_type: 'float'}
       - {label: 'Zdjęcie', name: 'img', widget: 'image'}
-      - {label: 'Lokalizacje', name: 'locations', widget: 'list', summary: '{{fields.location}}', field: {label: 'Lokalizacja', name: 'location', widget: 'string'}}
+      - {
+          label: 'Lokalizacje', 
+          name: 'locations', 
+          widget: 'list', 
+          summary: '{{fields.location}}', 
+          field: {
+            label: 'Lokalizacja', 
+            name: 'location', 
+            widget: 'string'
+          }
+        }

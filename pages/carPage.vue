@@ -1,42 +1,6 @@
 <template>
   <v-app>
     <v-container class="background container">
-      <v-row>
-        <v-col><v-btn @click="showModels = !showModels" color="#def2f1">Zaznacz model aut</v-btn> </v-col>
-        <v-col><v-btn @click="showSegments = !showSegments" color="#def2f1">Zaznacz segment aut</v-btn> </v-col>
-        <v-col
-          ><v-text-field
-            class="price_btn"
-            type="number"
-            label="Wpisz minimalną ceną"
-            placeholder="Cena min"
-            v-model="price.minPrice"
-            outlined
-            dense
-          ></v-text-field
-        ></v-col>
-        <v-col
-          ><v-text-field
-            class="price_btn"
-            type="number"
-            label="Wpisz maksymalną cenę"
-            placeholder="Cena max"
-            v-model="price.maxPrice"
-            outlined
-            dense
-          ></v-text-field
-        ></v-col>
-        <v-col
-          ><v-select
-            class="sort_select"
-            :items="sort.sortByItems"
-            label="Sortowanie"
-            v-model="sort.sortBy"
-            :value="sort.sortByItems"
-            dense
-          ></v-select
-        ></v-col>
-      </v-row>
       <div class="show_models_segment">
         <v-row>
           <v-card class="models_card" v-if="showModels" outlined>
@@ -71,6 +35,86 @@
           </v-card>
         </v-row>
       </div>
+      <v-row>
+        <v-col><v-btn @click="showModelsSelect" color="#def2f1">Zaznacz producenta aut</v-btn> </v-col>
+        <v-col><v-btn @click="showSegmentSelect" color="#def2f1">Zaznacz segment aut</v-btn> </v-col>
+        <v-col
+          ><v-text-field
+            class="price_btn"
+            type="number"
+            label="Wpisz minimalną ceną"
+            placeholder="Cena min"
+            v-model="price.minPrice"
+            outlined
+            dense
+          ></v-text-field
+        ></v-col>
+        <v-col
+          ><v-text-field
+            class="price_btn"
+            type="number"
+            label="Wpisz maksymalną cenę"
+            placeholder="Cena max"
+            v-model="price.maxPrice"
+            outlined
+            dense
+          ></v-text-field
+        ></v-col>
+        <v-col
+          ><v-select
+            class="sort_select"
+            :items="sort.sortByItems"
+            label="Sortowanie"
+            v-model="sort.sortBy"
+            :value="sort.sortByItems"
+            dense
+          ></v-select
+        ></v-col>
+      </v-row>
+      <v-menu
+        v-model="menu"
+        :close-on-content-click="false"
+        :nudge-right="40"
+        transition="scale-transition"
+        offset-y
+        min-width="auto"
+      >
+        <template v-slot:activator="{ on, attrs }">
+          <v-text-field
+            class="date_picker_menu1"
+            v-model="pickupDate"
+            @change="availableCars()"
+            label="Data odbioru"
+            prepend-icon="mdi-calendar"
+            readonly
+            v-bind="attrs"
+            v-on="on"
+          ></v-text-field>
+        </template>
+        <v-date-picker v-model="pickupDate" @input="menu = false"></v-date-picker>
+      </v-menu>
+      <v-menu
+        v-model="menu2"
+        :close-on-content-click="false"
+        :nudge-right="40"
+        transition="scale-transition"
+        offset-y
+        min-width="auto"
+      >
+        <template v-slot:activator="{ on, attrs }">
+          <v-text-field
+            class="date_picker_menu2"
+            v-model="returnDate"
+            @change="availableCars()"
+            label="Data zwrotu"
+            prepend-icon="mdi-calendar"
+            readonly
+            v-bind="attrs"
+            v-on="on"
+          ></v-text-field>
+        </template>
+        <v-date-picker v-model="returnDate" @input="menu2 = false"></v-date-picker>
+      </v-menu>
       <v-text-field height="20px" class="car_search" type="text" v-model="searchInput" placeholder="Wyszukaj auta" />
       <div class="car_table">
         <v-card
@@ -153,6 +197,11 @@ export default {
       backgroundColor: '',
       backgroundOpacity: 0,
       backgroundZindex: -1,
+      pickupDate: new Date().toISOString().substr(0, 10),
+      returnDate: new Date().toISOString().substr(0, 10),
+      menu: false,
+      menu2: false,
+      allAvailableCars: [],
     }
   },
   computed: {
@@ -221,6 +270,49 @@ export default {
     },
   },
   methods: {
+    availableCars() {
+      /*var cars = []
+      this.carPosts.forEach((car) => {
+        var reservations = this.asyncReservations(car.vin)
+        if (reservations.length === 0) {
+          cars.push(car)
+        }
+        reservations.forEach((res) => {
+          var rPickupDate = new Date(res.val().PickupDate)
+          var rReturnDate = new Date(res.val().ReturnDate)
+          var dPickupDate = new Date(this.pickupDate)
+          var dReturnDate = new Date(this.returnDate)
+          var maxStartDate = new Date(Math.max(rPickupDate, dPickupDate))
+          var minEndDate = new Date(Math.min(rReturnDate, dReturnDate))
+          if (!(maxStartDate < minEndDate)) {
+            cars.push(car)
+          }
+        })
+      })*/
+      console.log('IM HERE')
+      this.allAvailableCars = cars
+    },
+    asyncReservations(vin) {
+      var reservations = []
+      this.$fire.database
+        .ref('Reservations/')
+        .orderByChild('vin')
+        .equalTo(vin)
+        .on('value', (snapshot) => {
+          snapshot.forEach((childSnapshot) => {
+            reservations.push(childSnapshot)
+          })
+        })
+      return reservations
+    },
+    showModelsSelect() {
+      this.showModels = !this.showModels
+      this.showSegments = false
+    },
+    showSegmentSelect() {
+      this.showSegments = !this.showSegments
+      this.showModels = false
+    },
     showCarDetails(carPost) {
       this.showCarDetailsBool = true
       this.car.img = carPost.img
