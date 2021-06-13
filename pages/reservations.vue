@@ -1,43 +1,47 @@
 <template>
-  <v-container class="reservations_container">
-    <ReservationDetails
-      v-for="(reservation, index) in getReservedCarVins"
-      :key="index"
-      :reservationNr="'#' + getReservationNr"
-      :reservationStartDate="reservation.val().PickupDate"
-      :reservationEndDate="reservation.val().ReturnDate"
-      :status="reservation.val().Status"
-      :pickupLocation="reservation.val().PickupLocation"
-      :returnLocation="reservation.val().ReturnLocation"
-      :carBrand="carBrand(reservation.val().vin)"
-      :carModel="carModel(reservation.val().vin)"
-      :reservation="reservation.key"
-    />
-  </v-container>
+  <v-app>
+    <v-container class="reservations_container">
+      <v-container> </v-container>
+      <v-btn to="/registerAdmin" class="add_new_admin_account">Dodaj nowe konto</v-btn>
+      <ReservationDetails
+        v-for="(reservation, index) in getReservds"
+        :key="index"
+        :reservationNr="'#' + getReservationNr"
+        :reservationStartDate="reservation.val().PickupDate"
+        :reservationEndDate="reservation.val().ReturnDate"
+        :status="reservation.val().Status"
+        :pickupLocation="reservation.val().PickupLocation"
+        :returnLocation="reservation.val().ReturnLocation"
+        :carBrand="carBrand(reservation.val().vin)"
+        :carModel="carModel(reservation.val().vin)"
+        :reservation="reservation.key"
+      />
+    </v-container>
+  </v-app>
 </template>
 
 <script>
 import ReservationDetails from '@/components/general/ReservationDetails'
 export default {
-  components: {
-    ReservationDetails,
-  },
   head() {
     return {
       script: { src: 'https://identity.netlify.com/v1/netlify-identity-widget.js' },
     }
   },
+  components: {
+    ReservationDetails,
+  },
   data() {
     return {
-      reservations: [],
       reservationNr: 0,
       carB: '',
       carM: '',
+      reservations: [],
     }
   },
   computed: {
-    getReservedCarVins() {
-      this.getUserReservations()
+    getReservds() {
+      this.getReservations()
       return this.reservations
     },
     getReservationNr() {
@@ -49,7 +53,7 @@ export default {
     },
   },
   methods: {
-    getUserReservations() {
+    getReservations() {
       this.reservations = []
       if (this.$fire.auth.currentUser) {
         let ref = this.$fire.database.ref('Reservations/')
