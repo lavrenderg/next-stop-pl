@@ -288,9 +288,12 @@
 }
 
 .car_reservation_client_info {
-    width: 800px;
     padding-left: 0px;
-    margin: 20px;
+    margin-left: 220px;
+    margin-right: 50px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 60%;
 }
 
 .car_reservation_client_info2 {
