@@ -36,15 +36,17 @@
         </v-row>
       </div>
       <v-row>
-        <v-col><v-btn @click="showModelsSelect" color="#def2f1">Zaznacz producenta aut</v-btn> </v-col>
-        <v-col><v-btn @click="showSegmentSelect" color="#def2f1">Zaznacz segment aut</v-btn> </v-col>
+        <v-col><v-btn @click="showModelsSelect" color="#ffffff">Zaznacz producenta aut</v-btn> </v-col>
+        <v-col><v-btn @click="showSegmentSelect" color="#ffffff">Zaznacz segment aut</v-btn> </v-col>
         <v-col
           ><v-text-field
             class="price_btn"
             type="number"
-            label="Wpisz minimalną ceną"
+            label="Cena min"
             placeholder="Cena min"
             v-model="price.minPrice"
+            solo
+            color="#ffffff"
             outlined
             dense
           ></v-text-field
@@ -53,9 +55,11 @@
           ><v-text-field
             class="price_btn"
             type="number"
-            label="Wpisz maksymalną cenę"
+            label="Cena max"
             placeholder="Cena max"
             v-model="price.maxPrice"
+            solo
+            color="#ffffff"
             outlined
             dense
           ></v-text-field
@@ -67,6 +71,8 @@
             label="Sortowanie"
             v-model="sort.sortBy"
             :value="sort.sortByItems"
+            solo
+            color="#ffffff"
             dense
           ></v-select
         ></v-col>
@@ -87,6 +93,8 @@
             label="Data odbioru"
             prepend-icon="mdi-calendar"
             readonly
+            solo
+            color="#ffffff"
             v-bind="attrs"
             v-on="on"
           ></v-text-field>
@@ -107,6 +115,8 @@
             v-model="returnDate"
             @change="availableCars()"
             label="Data zwrotu"
+            solo
+            color="#ffffff"
             prepend-icon="mdi-calendar"
             readonly
             v-bind="attrs"
@@ -174,8 +184,8 @@ export default {
       selectedModels: [],
       selectedSegments: [],
       price: {
-        minPrice: 0,
-        maxPrice: 50000,
+        minPrice: '',
+        maxPrice: '',
       },
       sort: {
         sortByItems: ['Lowest price', 'Highest price', 'Segment', 'Brand [A-Z]', 'Brand [Z-A]'],
