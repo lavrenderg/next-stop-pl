@@ -188,7 +188,7 @@ export default {
         maxPrice: '',
       },
       sort: {
-        sortByItems: ['Lowest price', 'Highest price', 'Segment', 'Brand [A-Z]', 'Brand [Z-A]'],
+        sortByItems: ['Najniższa cena', 'Najwyższa cena', 'Segment', 'Producent [A-Z]', 'Producent [Z-A]'],
         sortBy: '',
       },
       showCarDetailsBool: false,
@@ -231,12 +231,12 @@ export default {
     },
 
     sortedCars() {
-      if (this.sort.sortBy === 'Lowest price') {
+      if (this.sort.sortBy === 'Najniższa cena') {
         return this.filteredCars.sort(function (car1, car2) {
           return car1.price - car2.price
         })
       }
-      if (this.sort.sortBy === 'Highest price') {
+      if (this.sort.sortBy === 'Najwyższa cena') {
         return this.filteredCars.sort(function (car1, car2) {
           return car2.price - car1.price
         })
@@ -246,12 +246,12 @@ export default {
           return ('' + car1.segment).localeCompare(car2.segment)
         })
       }
-      if (this.sort.sortBy === 'Brand [A-Z]') {
+      if (this.sort.sortBy === 'Producent [A-Z]') {
         return this.filteredCars.sort(function (car1, car2) {
           return ('' + car1.model).localeCompare(car2.model)
         })
       }
-      if (this.sort.sortBy === 'Brand [Z-A]') {
+      if (this.sort.sortBy === 'Producent [Z-A]') {
         return this.filteredCars.sort(function (car1, car2) {
           return ('' + car2.model).localeCompare(car1.model)
         })
