@@ -381,6 +381,11 @@
     margin-top: 100px;
 }
 
+.v-text-field {
+    margin-top: unset;
+    padding-top: unset;
+}
+
 .car_reserve_info {
     padding-left: 30px;
     padding-right: 30px;
