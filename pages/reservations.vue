@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-container class="reservations_container">
+    <v-container fluid class="reservations_container">
       <v-container> </v-container>
       <v-btn to="/registerAdmin" class="add_new_admin_account">Dodaj nowe konto</v-btn>
       <ReservationDetails

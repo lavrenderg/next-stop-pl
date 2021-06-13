@@ -1,5 +1,5 @@
 <template>
-  <v-container class="reservations_container">
+  <v-container fluid class="reservations_container">
     <ClientReservationDetails
       v-for="(reservation, index) in getReservedCarVins"
       :key="index"
