@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container class="login_register_container">
     <h1>Rejestracja</h1>
 
     <UserAuthForm

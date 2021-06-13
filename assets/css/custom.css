@@ -192,6 +192,17 @@
     padding-right: 100px;
 }
 
+.login_register_container {
+    padding-top: 50px;
+    background-color: #def2f1;
+    margin-left: 0px;
+    margin-right: 0px;
+    max-width: 100%;
+    padding-left: 100px;
+    padding-right: 100px;
+    width: 100%;
+}
+
 .car_description-text {
     display: inline;
 }
