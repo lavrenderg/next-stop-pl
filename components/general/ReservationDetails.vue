@@ -58,7 +58,7 @@ export default {
     },
     confirmStatusChange() {
       this.$fire.database.ref('Reservations/' + this.reservation + '/Status').set(this.newStatus)
-      //this.$forceUpdate()
+      this.$forceUpdate()
     },
   },
 }

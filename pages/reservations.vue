@@ -4,7 +4,7 @@
       <v-container> </v-container>
       <v-btn to="/registerAdmin" class="add_new_admin_account">Dodaj nowe konto</v-btn>
       <ReservationDetails
-        v-for="(reservation, index) in getReservations"
+        v-for="(reservation, index) in getReservds"
         :key="index"
         :reservationNr="'#' + getReservationNr"
         :reservationStartDate="reservation.val().PickupDate"
@@ -40,12 +40,8 @@ export default {
     }
   },
   computed: {
-    getReservations() {
-      this.$fire.database.ref('Reservations/').on('value', (snapshot) => {
-        snapshot.forEach((childSnapshot) => {
-          this.reservations.push(childSnapshot)
-        })
-      })
+    getReservds() {
+      this.getReservations()
       return this.reservations
     },
     getReservationNr() {
@@ -57,6 +53,15 @@ export default {
     },
   },
   methods: {
+    getReservations() {
+      this.reservations = []
+      this.$fire.database.ref('Reservations/').on('value', (snapshot) => {
+        snapshot.forEach((childSnapshot) => {
+          this.reservations.push(childSnapshot)
+        })
+      })
+      console.log('computing..' + this.reservations.length)
+    },
     carBrand(vin) {
       this.carPosts.forEach((car) => {
         if (car.vin == vin) {
