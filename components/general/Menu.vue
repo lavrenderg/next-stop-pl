@@ -26,7 +26,7 @@
         <v-btn text to="/myReservations">Historia rezerwacji</v-btn>
         <v-btn @click="logout" text>Logout</v-btn>
       </div>
-      <div v-show="this.$fire.auth.currentUser == null">
+      <div v-show="!this.$fire.auth.currentUser">
         <v-btn text to="/register">Rejestracja</v-btn>
         <v-btn text to="/login">Logowanie</v-btn>
       </div>

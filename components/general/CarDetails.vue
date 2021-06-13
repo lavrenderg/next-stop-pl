@@ -43,7 +43,7 @@
       </v-row>
     </v-card>
     <v-card class="car_reservation_div" v-if="showReservationFormDiv">
-      <div class="car_reservation_info">
+      <div class="car_reserve_info">
         <p>Rezerwacja samochodu : {{ brand }} {{ model }}</p>
         <v-row>
           <v-col>

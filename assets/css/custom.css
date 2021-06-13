@@ -184,6 +184,12 @@
 
 .container {
     padding-top: 50px;
+    background-color: #def2f1;
+    margin-left: 0px;
+    margin-right: 0px;
+    max-width: none;
+    padding-left: 100px;
+    padding-right: 100px;
 }
 
 .car_description-text {
@@ -362,4 +368,9 @@
     width: 50%;
     padding-bottom: 10px;
     margin-top: 100px;
+}
+
+.car_reserve_info {
+    padding-left: 30px;
+    padding-right: 30px;
 }

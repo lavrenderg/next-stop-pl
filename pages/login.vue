@@ -28,7 +28,7 @@ export default {
         that.errMessage = error.message
       })
 
-      //this.$forceUpdate()
+      this.$forceUpdate()
       this.$router.push('/')
     },
   },

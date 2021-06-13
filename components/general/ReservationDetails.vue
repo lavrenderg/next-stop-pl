@@ -3,7 +3,7 @@
     <v-row>
       <v-col class="car_reservation_client_info1">
         <div>
-          <v-card-title>Numer rezerwacji : {{ reservationNr }}</v-card-title>
+          <v-card-title>{{ status }} rezerwacja</v-card-title>
           <v-card-subtitle>{{ carBrand }} {{ carModel }}</v-card-subtitle>
           <br />
           <v-select class="select_new_status" :label="status" :items="statuses" v-model="newStatus"></v-select>

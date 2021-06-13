@@ -3,7 +3,7 @@
     <v-row>
       <v-col class="car_reservation_client_info1">
         <div>
-          <v-card-title>Numer rezerwacji : {{ reservationNr }}</v-card-title>
+          <v-card-title>{{ status }} rezerwacja</v-card-title>
           <v-card-subtitle>{{ carBrand }} {{ carModel }}</v-card-subtitle>
           <br />
           <v-btn class="cancel_btn" @click="cancelReservation"> Anuluj </v-btn>
