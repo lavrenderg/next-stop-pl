@@ -16,7 +16,7 @@
       </div>
     </div>
     <div class="test">
-      <div v-if="adminIsLoggedIn">
+      <!--<div v-if="adminIsLoggedIn">
         <v-btn text to="/reservations">Rezerwacje</v-btn>
         <v-btn @click="logout" text>Logout</v-btn>
       </div>
@@ -27,7 +27,7 @@
       <div v-if="this.$fire.auth.currentUser == null">
         <v-btn text to="/register">Rejestracja</v-btn>
         <v-btn text to="/login">Logowanie</v-btn>
-      </div>
+      </div> -->
     </div>
   </v-card>
 </template>
