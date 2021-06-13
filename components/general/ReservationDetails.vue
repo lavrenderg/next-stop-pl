@@ -1,13 +1,12 @@
 <template>
-  <v-card class="car_reservation_info">
+  <v-card class="car_reservation_client_info" :disabled="statusCancelled">
     <v-row>
       <v-col class="car_reservation_client_info1">
         <div>
           <v-card-title>Numer rezerwacji : {{ reservationNr }}</v-card-title>
           <v-card-subtitle>{{ carBrand }} {{ carModel }}</v-card-subtitle>
           <br />
-          <v-select class="select_new_status" :label="status" :items="statuses" v-model="newStatus"></v-select>
-          <v-btn small class="confirm_status_change" @click="confirmStatusChange">Potwierdź zmianę statusu</v-btn>
+          <v-btn class="cancel_btn" @click="cancelReservation"> Anuluj </v-btn>
         </div>
       </v-col>
       <v-col class="car_reservation_client_info2">
@@ -43,22 +42,16 @@ export default {
     'pickupLocation',
     'returnLocation',
     'reservation',
-    'selectedStatuses',
   ],
-  data() {
-    return {
-      statuses: ['Nowa', 'Potwierdzona', 'W trakcie', 'Anulowana', 'Wygasła'],
-      newStatus: this.status,
-    }
-  },
   methods: {
     cancelReservation() {
       this.$fire.database.ref('Reservations/' + this.reservation + '/Status').set('Anulowana')
-      //this.$forceUpdate()
-    },
-    confirmStatusChange() {
-      this.$fire.database.ref('Reservations/' + this.reservation + '/Status').set(this.newStatus)
       this.$forceUpdate()
+    },
+  },
+  computed: {
+    statusCancelled() {
+      return this.status === 'Anulowana'
     },
   },
 }

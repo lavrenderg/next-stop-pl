@@ -211,7 +211,7 @@ export default {
     filteredCars() {
       return this.carPosts.filter((car) => {
         return (
-          (this.selectedModels.includes(car.model) || this.selectedModels.length === 0) &&
+          (this.selectedModels.includes(car.brand) || this.selectedModels.length === 0) &&
           (this.selectedSegments.includes(car.segment) || this.selectedSegments.length === 0) &&
           car.price >= this.price.minPrice &&
           (car.price <= this.price.maxPrice || this.price.maxPrice === '' || this.price.maxPrice === '0') &&
@@ -254,7 +254,7 @@ export default {
       var i
       var tab = []
       for (i = 0; i < this.carPosts.length; i++) {
-        tab[i] = this.carPosts[i].model
+        tab[i] = this.carPosts[i].brand
       }
       let unique = [...new Set(tab)]
       return unique.sort()

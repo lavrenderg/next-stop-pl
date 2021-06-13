@@ -158,6 +158,7 @@ export default {
           PickupLocation: this.pickupLocation,
           ReturnLocation: this.returnLocation,
           Status: 'Nowa',
+          IsHidden: 0,
         })
       } else {
         var userId = this.$fire.database.ref('Users').push().getKey()
