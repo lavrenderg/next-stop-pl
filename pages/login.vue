@@ -1,5 +1,5 @@
 <template>
-  <v-container class="login_register_container">
+  <v-container fluid class="login_register_container">
     <h1>Login</h1>
 
     <UserAuthForm buttonText="Login" hasPassword="true" :submitForm="loginUser" />
