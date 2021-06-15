@@ -1,0 +1,12 @@
+{
+  "img": "/img/1024px-honda_hr-v_1.6_2006.jpg",
+  "transmission": "Automatyczna",
+  "brand": "test",
+  "price": 233,
+  "model": "test",
+  "trunkCapacity": 433,
+  "seats": 4,
+  "segment": "C",
+  "vin": "test",
+  "engineType": "Diesel"
+}
