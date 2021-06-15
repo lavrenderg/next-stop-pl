@@ -1,0 +1,15 @@
+{
+  "img": "/img/1994_mercedes-benz_c_220_-w_202-_elegance_sedan_-2015-11-13-_01.jpg",
+  "transmission": "Manualna",
+  "brand": "Mercedes",
+  "price": 120,
+  "model": "Sedan",
+  "trunkCapacity": 430,
+  "seats": 5,
+  "segment": "D",
+  "vin": "IWE736IWND73846TS",
+  "engineType": "Benzyna",
+  "locations": [
+    "ul. Komandorska, 53  53-342, Wrocław"
+  ]
+}
