@@ -8,7 +8,7 @@
       strona
     </v-btn>
     <img class="header_img" src="@/static/img/buildings.png" />
-    <h2 class="header_text">Wynajem samochodów we Wrocławiu</h2>
+    <h2 class="header_text">NextStop - rezerwacja aut online</h2>
   </div>
 </template>
 
