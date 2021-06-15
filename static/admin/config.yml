@@ -13,6 +13,7 @@ public_folder: /img
 collections:
   - label: 'Site settings'
     name: 'site'
+    slug: "{{year}}-{{month}}-{{day}}_{{slug}}"
     files:
       - label: 'Info'
         name: 'info'
