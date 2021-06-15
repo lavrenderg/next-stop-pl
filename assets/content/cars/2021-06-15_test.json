@@ -1,0 +1,12 @@
+{
+  "img": "/img/1024px-Honda_HR-V_1.6_2006.jpg",
+  "transmission": "Automatyczna",
+  "brand": "test",
+  "price": 4,
+  "model": "test",
+  "trunkCapacity": 4,
+  "seats": 4,
+  "segment": "C",
+  "vin": "test",
+  "engineType": "Hybryda"
+}
