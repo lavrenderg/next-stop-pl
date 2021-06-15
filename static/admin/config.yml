@@ -41,7 +41,7 @@ collections:
     folder: 'assets/content/cars'
     create: true
     format: 'json'
-    slug: "{{year}}-{{month}}-{{day}}_{{slug}}"
+    slug: "{{year}}-{{month}}-{{day}}_{{vin}}"
     fields: 
       - {label: 'VIN', name: 'vin', widget: 'string'}
       - {label: 'Producent', name: 'brand', widget: 'string'}
