@@ -1,0 +1,16 @@
+{
+  "img": "/img/1024px-honda_hr-v_1.6_2006.jpg",
+  "transmission": "Manualna",
+  "brand": "Honda",
+  "price": 84,
+  "model": "HR-V",
+  "trunkCapacity": 498,
+  "seats": 4,
+  "segment": "B",
+  "vin": "KS84YWKDL3I8G7HRY",
+  "engineType": "Benzyna",
+  "locations": [
+    "ul. Graniczna, 159  54-530, Wrocław",
+    "ul. Ceglana, 3  50-002, Wrocław"
+  ]
+}
