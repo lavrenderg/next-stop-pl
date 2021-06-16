@@ -1,0 +1,15 @@
+{
+  "img": "/img/mercedes-benz_c_250_cdi_blueefficiency_coupé_edition_1_-c_204-_–_frontansicht-_2._juli_2011-_düsseldorf.jpg",
+  "transmission": "Manualna",
+  "brand": "Mercedes",
+  "price": 130,
+  "model": "Coupe",
+  "trunkCapacity": 450,
+  "seats": 4,
+  "segment": "C",
+  "vin": "KU736FDSK932Y35R44",
+  "engineType": "Benzyna",
+  "locations": [
+    "ul. Graniczna, 159  54-530, Wrocław"
+  ]
+}
