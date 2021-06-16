@@ -1,0 +1,16 @@
+{
+  "img": "/img/2005-2008_BMW_320i_(E90)_sedan_(2011-07-17)_01.jpg",
+  "transmission": "Automatyczna",
+  "brand": "BMW",
+  "price": 125,
+  "model": "Coupe",
+  "trunkCapacity": 435,
+  "seats": 5,
+  "segment": "D",
+  "vin": "748TDHFJ7W5HFYS6D",
+  "engineType": "Benzyna",
+  "locations": [
+    "ul. Ceglana, 3  50-002, Wrocław",
+    "ul. Graniczna, 159  54-530"
+  ]
+}
