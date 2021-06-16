@@ -1,0 +1,15 @@
+{
+  "img": "/img/1200px-skoda_fabia_familiy_-ii-_facelift-_–_frontansicht-_2._juni_2011-_düsseldorf.jpg",
+  "transmission": "Automatyczna",
+  "brand": "Skoda",
+  "price": 95,
+  "model": "Fabia",
+  "trunkCapacity": 480,
+  "seats": 5,
+  "segment": "B",
+  "vin": "USJR7394562G73YEK",
+  "engineType": "Diesel",
+  "locations": [
+    "ul. Graniczna, 159  54-530"
+  ]
+}
