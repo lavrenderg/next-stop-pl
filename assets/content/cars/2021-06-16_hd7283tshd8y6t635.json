@@ -1,0 +1,15 @@
+{
+  "img": "/img/kia-stinger-gt-test.jpg",
+  "transmission": "Automatyczna",
+  "brand": "KIA",
+  "price": 120,
+  "model": "Stinger",
+  "trunkCapacity": 406,
+  "seats": 5,
+  "segment": "D",
+  "vin": "HD7283TSHD8Y6T635",
+  "engineType": "Benzyna",
+  "locations": [
+    "ul. Graniczna, 159  54-530, Wrocław"
+  ]
+}
