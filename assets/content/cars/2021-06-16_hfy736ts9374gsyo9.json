@@ -1,0 +1,15 @@
+{
+  "img": "/img/wr-v-front-static.jpg",
+  "transmission": "Manualna",
+  "brand": "Honda",
+  "price": 135,
+  "model": "WR-V",
+  "trunkCapacity": 500,
+  "seats": 5,
+  "segment": "B",
+  "vin": "HFY736TS9374GSYO9",
+  "engineType": "Benzyna",
+  "locations": [
+    "ul. Ceglana, 3  50-002"
+  ]
+}
