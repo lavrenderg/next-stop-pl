@@ -125,7 +125,14 @@
         </template>
         <v-date-picker v-model="returnDate" @input="menu2 = false"></v-date-picker>
       </v-menu>
-      <v-text-field height="20px" class="car_search" type="text" v-model="searchInput" placeholder="Wyszukaj auta" />
+      <v-text-field
+        solo
+        height="20px"
+        class="car_search"
+        type="text"
+        v-model="searchInput"
+        placeholder="Wyszukaj auta"
+      />
       <div class="car_table">
         <v-card
           elevation="9"

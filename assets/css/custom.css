@@ -3,13 +3,13 @@
 }
 
 .menu {
-    width: 20%;
+    width: 23%;
     height: 100%;
     position: absolute;
     top: 0px;
     left: 0px;
     z-index: 3;
-    opacity: 1;
+    opacity: 0.85;
 }
 
 .back_btn {
@@ -213,6 +213,7 @@
     padding-left: 100px;
     padding-right: 100px;
     width: 100%;
+    min-height: 310px;
 }
 
 .car_description-text {
@@ -242,6 +243,7 @@
     display: inline-block;
     margin-left: 10px;
     margin-right: 10px;
+    margin-bottom: 20px;
 }
 
 .locations_div {
@@ -278,7 +280,7 @@
     position: fixed;
     z-index: 10;
     width: 700px;
-    top: 50%;
+    top: 60%;
     left: 50%;
     margin-top: -280px;
     margin-left: -340px;
@@ -288,7 +290,7 @@
     position: fixed;
     z-index: 10;
     width: fit-content;
-    top: 50%;
+    top: 40%;
     left: 50%;
     margin-top: -150px;
     margin-left: -250px;
@@ -386,11 +388,12 @@
 }
 
 .car_search {
-    margin-left: 25%;
-    margin-right: 25%;
+    position: absolute;
+    left: 25%;
+    right: 25%;
     width: 50%;
     padding-bottom: 10px;
-    margin-top: 100px;
+    top: 260px;
 }
 
 .v-text-field {
@@ -404,5 +407,5 @@
 }
 
 .car_table {
-    padding-top: 100px;
+    padding-top: 200px;
 }
