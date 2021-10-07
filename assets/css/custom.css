@@ -272,8 +272,8 @@
     margin-left: 270px;
     margin-right: 50px;
     margin-top: 10px;
-    margin-bottom: 10px;
-    width: 60%;
+    margin-bottom: 25px;
+    width: 70%;
 }
 
 .car_reservation_div {
@@ -328,7 +328,9 @@
 }
 
 .car_reservation_client_info2 {
-    margin-top: 20px;
+    position: absolute;
+    left: 53%;
+    top: 20%;
 }
 
 .cancel_btn {

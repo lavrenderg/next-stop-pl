@@ -6,7 +6,7 @@
           <v-card-title>{{ status }} rezerwacja</v-card-title>
           <v-card-subtitle>{{ carBrand }} {{ carModel }}</v-card-subtitle>
           <br />
-          <v-select class="select_new_status" :label="status" :items="statuses" v-model="newStatus"></v-select>
+          <v-select class="select_new_status" :label="status" :items="this.statuses" v-model="newStatus"></v-select>
           <v-btn small class="confirm_status_change" @click="confirmStatusChange">Potwierdź zmianę statusu</v-btn>
         </div>
       </v-col>
@@ -34,7 +34,6 @@
 <script>
 export default {
   props: [
-    'reservationNr',
     'carBrand',
     'carModel',
     'reservationStartDate',
@@ -43,7 +42,6 @@ export default {
     'pickupLocation',
     'returnLocation',
     'reservation',
-    'selectedStatuses',
   ],
   data() {
     return {
@@ -52,10 +50,6 @@ export default {
     }
   },
   methods: {
-    cancelReservation() {
-      this.$fire.database.ref('Reservations/' + this.reservation + '/Status').set('Anulowana')
-      //this.$forceUpdate()
-    },
     confirmStatusChange() {
       this.$fire.database.ref('Reservations/' + this.reservation + '/Status').set(this.newStatus)
       this.$forceUpdate()

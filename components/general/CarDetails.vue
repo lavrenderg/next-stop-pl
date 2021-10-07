@@ -151,6 +151,7 @@ export default {
       if (user) {
         var reservationId = this.$fire.database.ref('Reservations').push().getKey()
         this.$fire.database.ref('Reservations/' + reservationId).set({
+          ReservationId: reservationId,
           vin: this.vin,
           UserId: user.uid,
           PickupDate: this.pickupDate,

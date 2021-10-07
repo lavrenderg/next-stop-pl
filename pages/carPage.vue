@@ -218,15 +218,41 @@ export default {
       returnDate: '',
       menu: false,
       menu2: false,
-      allAvailableCars: [],
     }
   },
   computed: {
+    getReservations() {
+      return this.$store.state.reservations
+    },
     carPosts() {
       return this.$store.state.carPosts
     },
+    availableCars() {
+      var cars = []
+      this.carPosts.forEach((car) => {
+        var carIsAvailable = true
+        if (this.getReservations.length === 0) {
+          cars.push(car)
+        }
+        this.getReservations.forEach((res) => {
+          var rPickupDate = new Date(res.PickupDate)
+          var rReturnDate = new Date(res.ReturnDate)
+          var dPickupDate = new Date(this.pickupDate)
+          var dReturnDate = new Date(this.returnDate)
+          var maxStartDate = new Date(Math.max(rPickupDate, dPickupDate))
+          var minEndDate = new Date(Math.min(rReturnDate, dReturnDate))
+          if (maxStartDate < minEndDate) {
+            carIsAvailable = false
+          }
+        })
+        if (carIsAvailable) {
+          cars.push(car)
+        }
+      })
+      return cars
+    },
     filteredCars() {
-      return this.carPosts.filter((car) => {
+      return this.availableCars.filter((car) => {
         return (
           (this.selectedModels.includes(car.brand) || this.selectedModels.length === 0) &&
           (this.selectedSegments.includes(car.segment) || this.selectedSegments.length === 0) &&
@@ -236,7 +262,6 @@ export default {
         )
       })
     },
-
     sortedCars() {
       if (this.sort.sortBy === 'Najniższa cena') {
         return this.filteredCars.sort(function (car1, car2) {
@@ -286,30 +311,9 @@ export default {
       return unique.sort()
     },
   },
+
   methods: {
-    availableCars() {
-      /*var cars = []
-      this.carPosts.forEach((car) => {
-        var reservations = this.asyncReservations(car.vin)
-        if (reservations.length === 0) {
-          cars.push(car)
-        }
-        reservations.forEach((res) => {
-          var rPickupDate = new Date(res.val().PickupDate)
-          var rReturnDate = new Date(res.val().ReturnDate)
-          var dPickupDate = new Date(this.pickupDate)
-          var dReturnDate = new Date(this.returnDate)
-          var maxStartDate = new Date(Math.max(rPickupDate, dPickupDate))
-          var minEndDate = new Date(Math.min(rReturnDate, dReturnDate))
-          if (!(maxStartDate < minEndDate)) {
-            cars.push(car)
-          }
-        })
-      })*/
-      console.log('IM HERE')
-      this.allAvailableCars = cars
-    },
-    asyncReservations(vin) {
+    /*asyncReservations(vin) {
       var reservations = []
       this.$fire.database
         .ref('Reservations/')
@@ -321,7 +325,7 @@ export default {
           })
         })
       return reservations
-    },
+    },*/
     showModelsSelect() {
       this.showModels = !this.showModels
       this.showSegments = false

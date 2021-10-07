@@ -31,8 +31,6 @@ export default {
     return {
       reservations: [],
       reservationNr: 0,
-      carB: '',
-      carM: '',
     }
   },
   computed: {
@@ -65,20 +63,22 @@ export default {
       console.log('computing..' + this.reservations.length)
     },
     carBrand(vin) {
+      let carB = ''
       this.carPosts.forEach((car) => {
         if (car.vin == vin) {
-          this.carB = car.brand
+          carB = car.brand
         }
       })
-      return this.carB
+      return carB
     },
     carModel(vin) {
+      let carM = ''
       this.carPosts.forEach((car) => {
         if (car.vin == vin) {
-          this.carM = car.model
+          carM = car.model
         }
       })
-      return this.carM
+      return carM
     },
   },
 }

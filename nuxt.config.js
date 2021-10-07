@@ -58,7 +58,8 @@ export default {
      ** Plugins to load before mounting the App
      */
     plugins: [
-        { src: '~/plugins/splide.client.js', ssr: false }
+        { src: '~/plugins/splide.client.js', ssr: false },
+        { src: '~/plugins/firebase.js', ssr: false }
     ],
     /*
      ** Nuxt.js dev-modules
