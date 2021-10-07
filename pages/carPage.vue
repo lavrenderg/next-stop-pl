@@ -1,138 +1,144 @@
 <template>
   <v-app>
     <v-container class="background container">
-      <div class="show_models_segment">
+      <div class="grey_backgound">
+        <div class="show_models_segment">
+          <v-row>
+            <v-card class="models_card" v-if="showModels" outlined>
+              <v-row>
+                <v-checkbox
+                  class="checkbox"
+                  v-for="(carModel, index) in carModels"
+                  :key="index"
+                  :value="carModel"
+                  v-model="selectedModels"
+                  :label="carModel"
+                ></v-checkbox>
+              </v-row>
+            </v-card>
+          </v-row>
+          <v-row>
+            <v-card class="segment_card" v-if="showSegments && !showModels" outlined>
+              <v-row>
+                <v-checkbox
+                  class="checkbox"
+                  v-for="(carSegment, index) in carSegments"
+                  :key="index"
+                  :value="carSegment"
+                  v-model="selectedSegments"
+                  :label="carSegment"
+                ></v-checkbox>
+              </v-row>
+            </v-card>
+          </v-row>
+          
+          <v-row
+            <v-select
+              class="sort_select"
+              :items="sort.sortByItems"
+              label="Sortowanie"
+              v-model="sort.sortBy"
+              :value="sort.sortByItems"
+              color="#ffffff"
+              dense
+            ></v-select
+          ></v-row>
+        </div>
         <v-row>
-          <v-card class="models_card" v-if="showModels" outlined>
-            <v-row>
-              <v-checkbox
-                class="checkbox"
-                v-for="(carModel, index) in carModels"
-                :key="index"
-                :value="carModel"
-                v-model="selectedModels"
-                :label="carModel"
-              >
-                <v-col></v-col
-              ></v-checkbox>
-            </v-row>
-          </v-card>
+          <v-col><v-btn small @click="showModelsSelect" color="#ffffff">Zaznacz producenta aut</v-btn> </v-col>
+          <v-col
+            ><v-text-field
+              class="price_btn"
+              type="number"
+              label="Cena min"
+              placeholder="Cena min"
+              v-model="price.minPrice"
+              solo
+              color="#ffffff"
+              outlined
+              dense
+            ></v-text-field
+          ></v-col>
+          <v-col>
+            <v-menu
+              v-model="menu"
+              :close-on-content-click="false"
+              :nudge-right="40"
+              transition="scale-transition"
+              offset-y
+              min-width="auto"
+            >
+              <template v-slot:activator="{ on, attrs }">
+                <v-text-field
+                  class="date_picker_menu1"
+                  v-model="pickupDate"
+                  @change="availableCars()"
+                  label="Data odbioru"
+                  prepend-icon="mdi-calendar"
+                  readonly
+                  solo
+                  color="#ffffff"
+                  v-bind="attrs"
+                  v-on="on"
+                ></v-text-field>
+              </template>
+              <v-date-picker v-model="pickupDate" @input="menu = false"></v-date-picker>
+            </v-menu>
+          </v-col>
         </v-row>
         <v-row>
-          <v-card class="segment_card" v-if="showSegments && !showModels" outlined>
-            <v-row>
-              <v-checkbox
-                class="checkbox"
-                v-for="(carSegment, index) in carSegments"
-                :key="index"
-                :value="carSegment"
-                v-model="selectedSegments"
-                :label="carSegment"
-              >
-                <v-col></v-col
-              ></v-checkbox>
-            </v-row>
-          </v-card>
+          <v-col><v-btn small @click="showSegmentSelect" color="#ffffff">Zaznacz segment aut</v-btn> </v-col>
+          <v-col
+            ><v-text-field
+              class="price_btn"
+              type="number"
+              label="Cena max"
+              placeholder="Cena max"
+              v-model="price.maxPrice"
+              solo
+              color="#ffffff"
+              outlined
+              dense
+            ></v-text-field
+          ></v-col>
+          <v-col>
+            <v-menu
+              v-model="menu2"
+              :close-on-content-click="false"
+              :nudge-right="40"
+              transition="scale-transition"
+              offset-y
+              min-width="auto"
+            >
+              <template v-slot:activator="{ on, attrs }">
+                <v-text-field
+                  class="date_picker_menu2"
+                  v-model="returnDate"
+                  @change="availableCars()"
+                  label="Data zwrotu"
+                  solo
+                  color="#ffffff"
+                  prepend-icon="mdi-calendar"
+                  readonly
+                  v-bind="attrs"
+                  v-on="on"
+                ></v-text-field>
+              </template>
+              <v-date-picker v-model="returnDate" @input="menu2 = false"></v-date-picker>
+            </v-menu>
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-text-field
+            solo
+            height="20px"
+            class="car_search"
+            type="text"
+            v-model="searchInput"
+            placeholder="Wyszukaj auta"
+          />
         </v-row>
       </div>
-      <v-row>
-        <v-col><v-btn @click="showModelsSelect" color="#ffffff">Zaznacz producenta aut</v-btn> </v-col>
-        <v-col><v-btn @click="showSegmentSelect" color="#ffffff">Zaznacz segment aut</v-btn> </v-col>
-        <v-col
-          ><v-text-field
-            class="price_btn"
-            type="number"
-            label="Cena min"
-            placeholder="Cena min"
-            v-model="price.minPrice"
-            solo
-            color="#ffffff"
-            outlined
-            dense
-          ></v-text-field
-        ></v-col>
-        <v-col
-          ><v-text-field
-            class="price_btn"
-            type="number"
-            label="Cena max"
-            placeholder="Cena max"
-            v-model="price.maxPrice"
-            solo
-            color="#ffffff"
-            outlined
-            dense
-          ></v-text-field
-        ></v-col>
-        <v-col
-          ><v-select
-            class="sort_select"
-            :items="sort.sortByItems"
-            label="Sortowanie"
-            v-model="sort.sortBy"
-            :value="sort.sortByItems"
-            solo
-            color="#ffffff"
-            dense
-          ></v-select
-        ></v-col>
-      </v-row>
-      <v-menu
-        v-model="menu"
-        :close-on-content-click="false"
-        :nudge-right="40"
-        transition="scale-transition"
-        offset-y
-        min-width="auto"
-      >
-        <template v-slot:activator="{ on, attrs }">
-          <v-text-field
-            class="date_picker_menu1"
-            v-model="pickupDate"
-            @change="availableCars()"
-            label="Data odbioru"
-            prepend-icon="mdi-calendar"
-            readonly
-            solo
-            color="#ffffff"
-            v-bind="attrs"
-            v-on="on"
-          ></v-text-field>
-        </template>
-        <v-date-picker v-model="pickupDate" @input="menu = false"></v-date-picker>
-      </v-menu>
-      <v-menu
-        v-model="menu2"
-        :close-on-content-click="false"
-        :nudge-right="40"
-        transition="scale-transition"
-        offset-y
-        min-width="auto"
-      >
-        <template v-slot:activator="{ on, attrs }">
-          <v-text-field
-            class="date_picker_menu2"
-            v-model="returnDate"
-            @change="availableCars()"
-            label="Data zwrotu"
-            solo
-            color="#ffffff"
-            prepend-icon="mdi-calendar"
-            readonly
-            v-bind="attrs"
-            v-on="on"
-          ></v-text-field>
-        </template>
-        <v-date-picker v-model="returnDate" @input="menu2 = false"></v-date-picker>
-      </v-menu>
-      <v-text-field
-        solo
-        height="20px"
-        class="car_search"
-        type="text"
-        v-model="searchInput"
-        placeholder="Wyszukaj auta"
-      />
       <div class="car_table">
         <v-card
           elevation="9"
@@ -214,10 +220,15 @@ export default {
       backgroundColor: '',
       backgroundOpacity: 0,
       backgroundZindex: -1,
-      pickupDate: '',
-      returnDate: '',
+      pickupDate: this.$store.state.pickupDate,
+      returnDate: this.$store.state.returnDate,
       menu: false,
       menu2: false,
+      locations: [
+        'Oddział Nr 1 - ul. Graniczna, 159',
+        'Oddział Nr 2 - ul. Ceglana, 3',
+        'Oddział Nr 3 - ul. Komandorska, 53',
+      ],
     }
   },
   computed: {
@@ -314,19 +325,6 @@ export default {
   },
 
   methods: {
-    /*asyncReservations(vin) {
-      var reservations = []
-      this.$fire.database
-        .ref('Reservations/')
-        .orderByChild('vin')
-        .equalTo(vin)
-        .on('value', (snapshot) => {
-          snapshot.forEach((childSnapshot) => {
-            reservations.push(childSnapshot)
-          })
-        })
-      return reservations
-    },*/
     showModelsSelect() {
       this.showModels = !this.showModels
       this.showSegments = false

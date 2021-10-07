@@ -6,57 +6,51 @@
           <h1 class="color_test">Szybka rezerwacja</h1>
         </v-row>
         <v-row>
-          <v-col>
-            <p class="color_test">Lokalizacja</p>
-            <v-select :items="locations" class="location_btn" placeholder="Odbiór"></v-select>
-            <v-select :items="locations" class="location_btn" placeholder="Zwrot"></v-select>
-          </v-col>
-          <v-col>
-            <p>Data</p>
-            <v-menu
-              v-model="menu"
-              :close-on-content-click="false"
-              :nudge-right="40"
-              transition="scale-transition"
-              offset-y
-              min-width="auto"
-            >
-              <template v-slot:activator="{ on, attrs }">
-                <v-text-field
-                  class="data_btn"
-                  v-model="pickupDate"
-                  label="Data odbioru"
-                  prepend-icon="mdi-calendar"
-                  readonly
-                  v-bind="attrs"
-                  v-on="on"
-                ></v-text-field>
-              </template>
-              <v-date-picker v-model="pickupDate" @input="menu = false"></v-date-picker>
-            </v-menu>
-            <v-menu
-              v-model="menu2"
-              :close-on-content-click="false"
-              :nudge-right="40"
-              transition="scale-transition"
-              offset-y
-              min-width="auto"
-            >
-              <template v-slot:activator="{ on, attrs }">
-                <v-text-field
-                  class="data_btn"
-                  v-model="returnDate"
-                  label="Data zwrotu"
-                  prepend-icon="mdi-calendar"
-                  readonly
-                  v-bind="attrs"
-                  v-on="on"
-                ></v-text-field>
-              </template>
-              <v-date-picker v-model="returnDate" @input="menu2 = false"></v-date-picker>
-            </v-menu>
-            <v-btn class="search_btn">Szukaj</v-btn>
-          </v-col>
+          <v-menu
+            v-model="menu"
+            :close-on-content-click="false"
+            :nudge-right="40"
+            transition="scale-transition"
+            offset-y
+            min-width="auto"
+          >
+            <template v-slot:activator="{ on, attrs }">
+              <v-text-field
+                class="data_btn"
+                v-model="pickupDate"
+                label="Data odbioru"
+                prepend-icon="mdi-calendar"
+                readonly
+                v-bind="attrs"
+                v-on="on"
+              ></v-text-field>
+            </template>
+            <v-date-picker v-model="pickupDate" @input="menu = false"></v-date-picker>
+          </v-menu>
+          <v-menu
+            v-model="menu2"
+            :close-on-content-click="false"
+            :nudge-right="40"
+            transition="scale-transition"
+            offset-y
+            min-width="auto"
+          >
+            <template v-slot:activator="{ on, attrs }">
+              <v-text-field
+                class="data_btn"
+                v-model="returnDate"
+                label="Data zwrotu"
+                prepend-icon="mdi-calendar"
+                readonly
+                v-bind="attrs"
+                v-on="on"
+              ></v-text-field>
+            </template>
+            <v-date-picker v-model="returnDate" @input="menu2 = false"></v-date-picker>
+          </v-menu>
+        </v-row>
+        <v-row>
+          <v-btn class="search_btn" @click="addFiltersAndSearchCars">Szukaj</v-btn>
         </v-row>
       </v-card>
 
@@ -157,11 +151,25 @@ export default {
         'Oddział Nr 2 - ul. Ceglana, 3',
         'Oddział Nr 3 - ul. Komandorska, 53',
       ],
+      pickupDate: '',
+      returnDate: '',
+      pickupLocation: '',
+      returnLocation: '',
     }
   },
   computed: {
     carPosts() {
       return this.$store.state.carPosts
+    },
+  },
+  methods: {
+    addFiltersAndSearchCars() {
+      this.$store.commit('SET_PICKUP_DATE', this.pickupDate)
+      this.$store.commit('SET_RETURN_DATE', this.returnDate)
+      this.$store.commit('SET_PICKUP_LOCATION', this.pickupLocation)
+      this.$store.commit('SET_RETURN_LOCATION', this.returnLocation)
+
+      //window.location.href = 'http://localhost:3000/carPage'
     },
   },
 }

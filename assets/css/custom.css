@@ -99,10 +99,10 @@
 
 .quick_reservation {
     width: fit-content;
-    height: fit-content;
-    margin-left: 100px;
-    top: 25px;
-    margin-bottom: 50px;
+    height: 200px;
+    margin-left: 110px;
+    top: 40px;
+    margin-bottom: 65px;
     padding: 30px;
 }
 
@@ -114,12 +114,12 @@
 }
 
 .data_btn {
-    max-width: 250px;
-    width: 250px;
+    max-width: 200px;
+    width: 200px;
 }
 
 .search_btn {
-    left: 150px;
+    left: 300px;
 }
 
 .car_examples_slider {
@@ -185,13 +185,30 @@
     margin-right: auto;
 }
 
+.checkbox .v-label {
+    font-size: 13px;
+}
+
 .price_btn {
     width: 200px;
-    height: 20%;
+    min-height: 0%;
+    height: 2%;
+}
+
+.v-text-field .v-input__control .v-input__slot {
+    min-height: auto !important;
+    display: flex !important;
+    align-items: center !important;
 }
 
 .sort_select {
-    margin-right: 20px;
+    width: 150px;
+    margin-left: 600px;
+    top: 25px;
+}
+
+.sort_select .v-input__control {
+    font-size: 13px;
 }
 
 .container {
@@ -374,28 +391,12 @@
 
 .date_picker_menu1,
 .date_picker_menu2 {
-    width: 200px;
+    width: 300px;
     max-width: 200px;
-    margin-bottom: 100px;
-    position: absolute;
-    top: 190px;
-}
-
-.date_picker_menu1 {
-    right: 400px;
-}
-
-.date_picker_menu2 {
-    right: 150px;
-}
-
-.car_search {
-    position: absolute;
-    left: 25%;
-    right: 25%;
-    width: 50%;
-    padding-bottom: 10px;
-    top: 260px;
+    min-height: 0px;
+    height: 20px;
+    padding: 0px;
+    margin: 0px;
 }
 
 .v-text-field {
@@ -409,5 +410,16 @@
 }
 
 .car_table {
-    padding-top: 200px;
+    padding-top: 100px;
+}
+
+.color_test {
+    margin-bottom: 20px;
+}
+
+.grey_backgound {
+    background-color: rgba(179, 179, 179, 0.233);
+    padding: 20px;
+    height: 35%;
+    width: 70%;
 }

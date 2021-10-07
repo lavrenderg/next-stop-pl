@@ -1,37 +1,13 @@
 import { SET_CAR_POSTS, SET_RESERVATIONS } from './mutations.type'
 import { db } from "../plugins/firebase"
-import Vue from 'vue'
-import Vuex from 'vuex'
-
-/*Vue.use(Vuex)
-
-export const store = new Vuex.Store({
-    state: {
-        reservations: ['res1', 'res2']
-    },
-    mutations: {
-        setReservds(state, val) {
-            state.reservations = val
-        }
-    }
-})
-*/
-
-/*db.ref('Reservations/')
-    .orderByChild('IsHidden')
-    .equalTo(0)
-    .on('value', (snapshot) => {
-        let reservsArray = []
-        snapshot.forEach((childSnapshot) => {
-            reservsArray.push(childSnapshot)
-        })
-        store.commit('SET_RESERVATIONS', reservsArray)
-    })
-*/
 export const state = () => ({
     carPosts: [],
     user: null,
     reservations: [],
+    pickupDate: '',
+    returnDate: '',
+    pickupLocation: '',
+    returnLocation: '',
 })
 
 export const mutations = {
@@ -43,6 +19,18 @@ export const mutations = {
     },
     [SET_RESERVATIONS](state, val) {
         state.reservations = val
+    },
+    SET_PICKUP_DATE(state, val) {
+        state.pickupDate = val
+    },
+    SET_RETURN_DATE(state, val) {
+        state.returnDate = val
+    },
+    SET_PICKUP_LOCATION(state, val) {
+        state.pickupLocation = val
+    },
+    SET_RETURN_LOCATION(state, val) {
+        state.returnLocation = val
     }
 }
 
@@ -53,15 +41,11 @@ export const actions = {
             .orderByChild('IsHidden')
             .equalTo(0)
             .on('value', (snapshot) => {
-
                 snapshot.forEach((childSnapshot) => {
-                        reservsArray.push(childSnapshot)
-                    })
-                    //return reservsArray
+                    reservsArray.push(childSnapshot)
+                })
             })
-        console.log('inside getReservds=' + reservsArray[0].key)
         return reservsArray
-            // return ['res1', 'res2']
     },
     getPosts(files) {
         return files.keys().map((key) => {
