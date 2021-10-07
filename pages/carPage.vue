@@ -142,7 +142,7 @@
           :key="index"
         >
           <v-img :src="carPost.img" max-height="100" max-width="200"></v-img>
-          <p>{{ carPost.brand }} {{ car.model }}</p>
+          <p>{{ carPost.brand }} {{ carPost.model }}</p>
           <p>Segment: {{ carPost.segment }}</p>
           <p>Cena: od {{ carPost.price }} zł</p>
           <v-btn text @click="showCarDetails(carPost)">Pokaż szczegóły</v-btn>
@@ -241,7 +241,7 @@ export default {
           var dReturnDate = new Date(this.returnDate)
           var maxStartDate = new Date(Math.max(rPickupDate, dPickupDate))
           var minEndDate = new Date(Math.min(rReturnDate, dReturnDate))
-          if (maxStartDate < minEndDate) {
+          if (maxStartDate < minEndDate && car.vin === res.vin) {
             carIsAvailable = false
           }
         })
@@ -258,7 +258,8 @@ export default {
           (this.selectedSegments.includes(car.segment) || this.selectedSegments.length === 0) &&
           car.price >= this.price.minPrice &&
           (car.price <= this.price.maxPrice || this.price.maxPrice === '' || this.price.maxPrice === '0') &&
-          car.model.toLowerCase().match(this.searchInput.toLowerCase())
+          (car.model.toLowerCase().match(this.searchInput.toLowerCase()) ||
+            car.brand.toLowerCase().match(this.searchInput.toLowerCase()))
         )
       })
     },
