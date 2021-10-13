@@ -18,15 +18,15 @@
       </div>
     </div>
     <div class="test">
-      <div v-show="adminIsLoggedIn">
+      <div v-show="this.adminIsLoggedIn">
         <v-btn text to="/reservations">Rezerwacje</v-btn>
         <v-btn @click="logout" text>Logout</v-btn>
       </div>
-      <div v-show="this.$fire.auth.currentUser != null && !adminIsLoggedIn">
+      <div v-show="this.userIsLoggedIn && !this.adminIsLoggedIn">
         <v-btn text to="/myReservations">Moje rezerwacje</v-btn>
         <v-btn @click="logout" text>Logout</v-btn>
       </div>
-      <div v-show="!this.$fire.auth.currentUser">
+      <div v-show="!this.userIsLoggedIn">
         <v-btn text to="/register">Rejestracja</v-btn>
         <v-btn text to="/login">Logowanie</v-btn>
       </div>
@@ -36,18 +36,11 @@
 
 <script>
 export default {
-  data() {
-    return {
-      adminIsLogged: false,
-      userIsLogged: false,
-    }
-  },
   methods: {
     logout() {
-      this.userIsLogged = false
-      this.adminIsLogged = false
       $nuxt.$fire.auth.signOut()
-      this.$forceUpdate()
+      this.$store.commit('SET_LOGGED_USER', false)
+      this.$store.commit('SET_LOGGED_ADMIN', false)
       this.$router.push('/login')
     },
     closeMenu() {
@@ -55,7 +48,13 @@ export default {
     },
   },
   computed: {
+    userIsLoggedIn() {
+      return this.$store.state.userIsLoggedIn
+    },
     adminIsLoggedIn() {
+      return this.$store.state.adminIsLoggedIn
+    },
+    /*adminIsLoggedIn() {
       if (this.$fire.auth.currentUser) {
         if (this.$fire.auth.currentUser.uid == 'gQf6xebhWqYXYzU3OIz39y45Glm1') {
           return true
@@ -64,7 +63,7 @@ export default {
         }
       }
       return false
-      /*let exists = false
+      let exists = false
       if (this.$fire.auth.currentUser) {
         let ref = this.$fire.database.ref('Admins/' + this.$fire.auth.currentUser.uid)
         ref.once('value').then((snapshot) => {
@@ -86,8 +85,8 @@ export default {
         return ref.child('Admins').child(this.$fire.auth.currentUser.uid).child('Email') != null
       } else {
         return false
-      }*/
-    },
+      }
+    },*/
   },
 }
 </script>

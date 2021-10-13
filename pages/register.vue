@@ -10,7 +10,6 @@
       hasPassword="true"
       :submitForm="registerUser"
     />
-
     <p class="error" v-if="showError">{{ errMessage }}</p>
   </v-container>
 </template>
@@ -43,15 +42,19 @@ export default {
           that.showError = true
           that.errMessage = error.message
         })
-      let userUid = this.$fire.auth.currentUser.uid
-      this.$fire.database.ref('Users/' + userUid).set({
-        Name: registerDetails.name,
-        Email: registerDetails.email,
-        Phone: registerDetails.phoneNumber,
-        Age: registerDetails.age,
-      })
-      this.$forceUpdate()
-      this.$router.push('/')
+      if (this.$fire.auth.currentUser != null) {
+        let userUid = this.$fire.auth.currentUser.uid
+        this.$fire.database.ref('Users/' + userUid).set({
+          Name: registerDetails.name,
+          Email: registerDetails.email,
+          Phone: registerDetails.phoneNumber,
+          Age: registerDetails.age,
+        })
+
+        this.$store.commit('SET_LOGGED_USER', true)
+        this.$store.commit('SET_LOGGED_ADMIN', false)
+        this.$router.push('/')
+      }
     },
   },
 }

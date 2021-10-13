@@ -1,12 +1,13 @@
 {
-  "img": "/img/car2.jpg",
-  "transmission": "Manualna",
-  "brand": "Honda",
-  "price": 75,
-  "model": "Brio",
-  "trunkCapacity": 400,
-  "seats": 5,
-  "segment": "C",
-  "vin": "HFY729T3H8K119JU7",
-  "engineType": "Diesel"
+    "img": "/img/car2.jpg",
+    "transmission": "Manualna",
+    "brand": "Honda",
+    "price": 75,
+    "model": "Brio",
+    "trunkCapacity": 400,
+    "seats": 5,
+    "segment": "C",
+    "vin": "HFY729T3H8K119JU7",
+    "engineType": "Diesel",
+    "location": "Oddział Nr 3 - ul. Komandorska, 53"
 }

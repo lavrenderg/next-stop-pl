@@ -27,9 +27,14 @@ export default {
         that.showError = true
         that.errMessage = error.message
       })
-
-      this.$forceUpdate()
-      this.$router.push('/')
+      if (this.$fire.auth.currentUser != null) {
+        this.$store.commit('SET_LOGGED_USER', true)
+        if (this.$fire.auth.currentUser.uid === 'gQf6xebhWqYXYzU3OIz39y45Glm1') {
+          this.$store.commit('SET_LOGGED_ADMIN', true)
+        }
+        //window.location.reload(true)
+        this.$router.push('/')
+      }
     },
   },
 }

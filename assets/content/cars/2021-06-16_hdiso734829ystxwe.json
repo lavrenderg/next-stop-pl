@@ -1,16 +1,13 @@
 {
-  "img": "/img/suzuki_kizashi_2.4_4x4_cvt_–_frontansicht-_8._juli_2012-_düsseldorf.jpg",
-  "transmission": "Manualna",
-  "brand": "Suzuki",
-  "price": 110,
-  "model": "Kizashi",
-  "trunkCapacity": 461,
-  "seats": 5,
-  "segment": "D",
-  "vin": "HDISO734829YSTXWE",
-  "engineType": "Diesel",
-  "locations": [
-    "ul. Graniczna, 159  54-530",
-    "ul. Komandorska, 53  53-342"
-  ]
+    "img": "/img/suzuki_kizashi_2.4_4x4_cvt_–_frontansicht-_8._juli_2012-_düsseldorf.jpg",
+    "transmission": "Manualna",
+    "brand": "Suzuki",
+    "price": 110,
+    "model": "Kizashi",
+    "trunkCapacity": 461,
+    "seats": 5,
+    "segment": "D",
+    "vin": "HDISO734829YSTXWE",
+    "engineType": "Diesel",
+    "location": "Oddział Nr 2 - ul. Ceglana, 3"
 }

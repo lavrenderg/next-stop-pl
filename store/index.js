@@ -1,5 +1,5 @@
-import { SET_CAR_POSTS, SET_RESERVATIONS } from './mutations.type'
-import { db } from "../plugins/firebase"
+import { SET_CAR_POSTS, SET_RESERVATIONS, SET_LOGGED_USER, SET_LOGGED_ADMIN } from './mutations.type'
+import { db, auth } from "../plugins/firebase"
 export const state = () => ({
     carPosts: [],
     user: null,
@@ -8,6 +8,8 @@ export const state = () => ({
     returnDate: '',
     pickupLocation: '',
     returnLocation: '',
+    userIsLoggedIn: false,
+    adminIsLoggedIn: false,
 })
 
 export const mutations = {
@@ -31,6 +33,12 @@ export const mutations = {
     },
     SET_RETURN_LOCATION(state, val) {
         state.returnLocation = val
+    },
+    SET_LOGGED_USER(state, val) {
+        state.userIsLoggedIn = val
+    },
+    SET_LOGGED_ADMIN(state, val) {
+        state.adminIsLoggedIn = val
     }
 }
 
@@ -54,17 +62,23 @@ export const actions = {
             return res
         })
     },
+    isUserLoggerIn() {
+        return auth.currentUser != null
+    },
+    isAdminLoggedIn() {
+        if (auth.currentUser != null) {
+            return auth.currentUser.uid === 'gQf6xebhWqYXYzU3OIz39y45Glm1'
+        } else {
+            return false
+        }
+    },
     async nuxtServerInit({ commit }) {
 
         let carFiles = await require.context('~/assets/content/cars/', false, /\.json$/)
         await commit(SET_CAR_POSTS, actions.getPosts(carFiles))
         await commit(SET_RESERVATIONS, actions.getReservds())
-
-        // ? When adding/changing NetlifyCMS collection types, make sure to:
-        // ? 1. Add/rename exact slugs here
-        // ? 2. Add/rename the MUTATION_TYPE names in `./mutations.type.js`
-        // ? 3. Add/rename `pages/YOUR_SLUG_HERE` and use the Vuex store like the included examples
-        // ? If you are adding, add a state, mutation and commit (like above) for it too
+        await commit(SET_LOGGED_USER, actions.isUserLoggerIn())
+        await commit(SET_LOGGED_ADMIN, actions.isAdminLoggedIn())
     },
     async onAuthStateChangedAction(state, { authUser, claims }) {
         if (!authUser) {

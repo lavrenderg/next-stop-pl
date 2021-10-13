@@ -87,7 +87,7 @@
               </template>
               <v-date-picker v-model="returnDate" @input="menu2 = false"></v-date-picker>
             </v-menu>
-            <v-select v-model="pickupLocation" :items="carLocations" label="Lokalizacja odbioru"></v-select>
+            <p>Lokalizacja odbioru : {{ this.carLocations }}</p>
             <v-select v-model="returnLocation" :items="locations" label="Lokalizacja zwrotu"></v-select>
           </v-col>
           <v-col>
@@ -137,7 +137,6 @@ export default {
         'Oddział Nr 2 - ul. Ceglana, 3',
         'Oddział Nr 3 - ul. Komandorska, 53',
       ],
-      pickupLocation: '',
       returnLocation: '',
     }
   },
@@ -156,7 +155,7 @@ export default {
           UserId: user.uid,
           PickupDate: this.pickupDate,
           ReturnDate: this.returnDate,
-          PickupLocation: this.pickupLocation,
+          PickupLocation: this.carLocations,
           ReturnLocation: this.returnLocation,
           Status: 'Nowa',
           IsHidden: 0,
@@ -175,7 +174,7 @@ export default {
           UserId: userId,
           PickupDate: this.pickupDate,
           ReturnDate: this.returnDate,
-          PickupLocation: this.pickupLocation,
+          PickupLocation: this.carLocations,
           ReturnLocation: this.returnLocation,
           Status: 'Nowa',
         })

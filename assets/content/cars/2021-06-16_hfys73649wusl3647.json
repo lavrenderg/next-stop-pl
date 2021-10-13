@@ -1,15 +1,13 @@
 {
-  "img": "/img/wr-v-front-static.jpg",
-  "transmission": "Manualna",
-  "brand": "Honda",
-  "price": 135,
-  "model": "WR-V",
-  "trunkCapacity": 500,
-  "seats": 5,
-  "segment": "B",
-  "vin": "HFYS73649WUSL3647",
-  "engineType": "Benzyna",
-  "locations": [
-    "ul. Ceglana, 3  50-002"
-  ]
+    "img": "/img/wr-v-front-static.jpg",
+    "transmission": "Manualna",
+    "brand": "Honda",
+    "price": 135,
+    "model": "WR-V",
+    "trunkCapacity": 500,
+    "seats": 5,
+    "segment": "B",
+    "vin": "HFYS73649WUSL3647",
+    "engineType": "Benzyna",
+    "location": "Oddział Nr 2 - ul. Ceglana, 3"
 }

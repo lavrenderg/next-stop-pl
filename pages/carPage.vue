@@ -3,7 +3,6 @@
     <v-container class="background container">
       <div class="grey_backgound">
         <div class="show_models_segment">
-          <v-row>
             <v-card class="models_card" v-if="showModels" outlined>
               <v-row>
                 <v-checkbox
@@ -16,8 +15,6 @@
                 ></v-checkbox>
               </v-row>
             </v-card>
-          </v-row>
-          <v-row>
             <v-card class="segment_card" v-if="showSegments && !showModels" outlined>
               <v-row>
                 <v-checkbox
@@ -31,34 +28,38 @@
               </v-row>
             </v-card>
           </v-row>
-          
-          <v-row
-            <v-select
-              class="sort_select"
-              :items="sort.sortByItems"
-              label="Sortowanie"
-              v-model="sort.sortBy"
-              :value="sort.sortByItems"
-              color="#ffffff"
-              dense
-            ></v-select
-          ></v-row>
         </div>
         <v-row>
-          <v-col><v-btn small @click="showModelsSelect" color="#ffffff">Zaznacz producenta aut</v-btn> </v-col>
-          <v-col
-            ><v-text-field
+          <v-col>
+            <v-btn class="select_btn" small @click="showModelsSelect" color="#ffffff">Zaznacz producenta aut</v-btn>
+          </v-col>
+          <v-col>
+            <v-btn small class="select_btn" @click="showSegmentSelect" color="#ffffff">Zaznacz segment aut</v-btn>
+          </v-col>
+          <v-col>
+            <v-text-field
               class="price_btn"
               type="number"
               label="Cena min"
-              placeholder="Cena min"
               v-model="price.minPrice"
               solo
               color="#ffffff"
               outlined
               dense
-            ></v-text-field
-          ></v-col>
+            ></v-text-field>
+          </v-col>
+          <v-col>
+            <v-text-field
+              class="price_btn"
+              type="number"
+              label="Cena max"
+              v-model="price.maxPrice"
+              solo
+              color="#ffffff"
+              outlined
+              dense
+            ></v-text-field>
+          </v-col>
           <v-col>
             <v-menu
               v-model="menu"
@@ -72,7 +73,6 @@
                 <v-text-field
                   class="date_picker_menu1"
                   v-model="pickupDate"
-                  @change="availableCars()"
                   label="Data odbioru"
                   prepend-icon="mdi-calendar"
                   readonly
@@ -85,22 +85,6 @@
               <v-date-picker v-model="pickupDate" @input="menu = false"></v-date-picker>
             </v-menu>
           </v-col>
-        </v-row>
-        <v-row>
-          <v-col><v-btn small @click="showSegmentSelect" color="#ffffff">Zaznacz segment aut</v-btn> </v-col>
-          <v-col
-            ><v-text-field
-              class="price_btn"
-              type="number"
-              label="Cena max"
-              placeholder="Cena max"
-              v-model="price.maxPrice"
-              solo
-              color="#ffffff"
-              outlined
-              dense
-            ></v-text-field
-          ></v-col>
           <v-col>
             <v-menu
               v-model="menu2"
@@ -114,7 +98,6 @@
                 <v-text-field
                   class="date_picker_menu2"
                   v-model="returnDate"
-                  @change="availableCars()"
                   label="Data zwrotu"
                   solo
                   color="#ffffff"
@@ -129,14 +112,40 @@
           </v-col>
         </v-row>
         <v-row>
+          <v-col>
+            <v-select
+              solo
+              class="select_pickup_date_carPage"
+              v-model="pickupLocation"
+              :items="locations"
+              label="Localizacja odbioru"
+              ></v-select>
+          </v-col>
+          <v-col>
           <v-text-field
-            solo
+            regular
             height="20px"
             class="car_search"
             type="text"
             v-model="searchInput"
             placeholder="Wyszukaj auta"
           />
+          </v-col>
+          <v-col>
+            <v-btn @click="clearFilters" small class="cancel_car_filters">Resetuj filtry
+            </v-btn>
+          </v-col>
+          <v-col>
+          <v-select
+          class="sort_select"
+          :items="sort.sortByItems"
+          label="Sortowanie"
+          v-model="sort.sortBy"
+          :value="sort.sortByItems"
+          color="#ffffff"
+          dense
+        ></v-select>
+          </v-col>
         </v-row>
       </div>
       <div class="car_table">
@@ -171,7 +180,7 @@
         :trunkCapacity="car.trunkCapacity"
         :price="car.price"
         :vin="car.vin"
-        :carLocations="car.carLocations"
+        :carLocations="car.location"
       />
     </v-container>
   </v-app>
@@ -215,13 +224,14 @@ export default {
         trunkCapacity: '',
         price: '',
         vin: '',
-        carLocations: [],
+        location: '',
       },
       backgroundColor: '',
       backgroundOpacity: 0,
       backgroundZindex: -1,
       pickupDate: this.$store.state.pickupDate,
       returnDate: this.$store.state.returnDate,
+      pickupLocation: this.$store.state.pickupLocation,
       menu: false,
       menu2: false,
       locations: [
@@ -263,6 +273,8 @@ export default {
       return cars
     },
     filteredCars() {
+      console.log('pickupLoc = ' + this.pickupLocation)
+      console.log('pickupLoc2 = ' + this.$store.state.pickupLocation)
       return this.availableCars.filter((car) => {
         return (
           (this.selectedModels.includes(car.brand) || this.selectedModels.length === 0) &&
@@ -270,7 +282,8 @@ export default {
           car.price >= this.price.minPrice &&
           (car.price <= this.price.maxPrice || this.price.maxPrice === '' || this.price.maxPrice === '0') &&
           (car.model.toLowerCase().match(this.searchInput.toLowerCase()) ||
-            car.brand.toLowerCase().match(this.searchInput.toLowerCase()))
+            car.brand.toLowerCase().match(this.searchInput.toLowerCase())) &&
+          (car.location === this.pickupLocation || this.pickupLocation === '')
         )
       })
     },
@@ -344,7 +357,7 @@ export default {
       this.car.trunkCapacity = carPost.trunkCapacity
       this.car.price = carPost.price
       this.car.vin = carPost.vin
-      this.car.carLocations = carPost.locations
+      this.car.location = carPost.location
       this.backgroundColor = '#ffffff'
       this.backgroundZindex = 3
     },
@@ -352,6 +365,18 @@ export default {
       this.showCarDetailsBool = false
       this.backgroundColor = ''
       this.backgroundZindex = -1
+      window.location.reload(true)
+    },
+    clearFilters() {
+      this.selectedModels = []
+      this.selectedSegments = []
+      this.price.minPrice = ''
+      this.price.maxPrice = ''
+      this.pickupDate = ''
+      this.returnDate = ''
+      this.pickupLocation = ''
+      this.searchInput = ''
+      this.sort.sortBy = ''
     },
   },
 }
