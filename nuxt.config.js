@@ -61,6 +61,7 @@ export default {
         { src: '~/plugins/splide.client.js', ssr: false },
         { src: '~/plugins/firebase.js', ssr: false }
     ],
+
     /*
      ** Nuxt.js dev-modules
      */

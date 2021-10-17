@@ -22,7 +22,10 @@
         "@nuxtjs/markdownit": "^1.2.6",
         "@splidejs/vue-splide": "^0.3.5",
         "@syncfusion/ej2-vue-dropdowns": "^19.1.63",
-        "firebase": "^8.6.2",
+        "cookies": "^0.8.0",
+        "firebase": "^8.10.0",
+        "firebase-admin": "^10.0.0",
+        "js-cookie": "^3.0.1",
         "nuxt": "^2.15.6",
         "vue-range-slider": "^0.6.0",
         "vue-simple-range-slider": "^0.1.10"

@@ -51,8 +51,8 @@ export default {
           Age: registerDetails.age,
         })
 
-        this.$store.commit('SET_LOGGED_USER', true)
-        this.$store.commit('SET_LOGGED_ADMIN', false)
+        this.$store.commit('setLoggedUser', true)
+        this.$store.commit('setLoggedAdmin', false)
         this.$router.push('/')
       }
     },

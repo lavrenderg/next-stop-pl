@@ -34,10 +34,10 @@ export const mutations = {
     SET_RETURN_LOCATION(state, val) {
         state.returnLocation = val
     },
-    SET_LOGGED_USER(state, val) {
+    [SET_LOGGED_USER](state, val) {
         state.userIsLoggedIn = val
     },
-    SET_LOGGED_ADMIN(state, val) {
+    [SET_LOGGED_ADMIN](state, val) {
         state.adminIsLoggedIn = val
     }
 }
@@ -66,19 +66,33 @@ export const actions = {
         return auth.currentUser != null
     },
     isAdminLoggedIn() {
+        let isAdminLoggedBool = false
         if (auth.currentUser != null) {
-            return auth.currentUser.uid === 'gQf6xebhWqYXYzU3OIz39y45Glm1'
+            db.ref('Admins/')
+                .on('value', (snapshot) => {
+                    snapshot.forEach((childSnapshot) => {
+                        if (childSnapshot.key === auth.currentUser.uid) {
+                            isAdminLoggedBool = true
+                        }
+                    })
+                })
+            console.log('Admin=' + isAdminLoggedBool)
+            return isAdminLoggedBool
         } else {
             return false
         }
     },
     async nuxtServerInit({ commit }) {
-
         let carFiles = await require.context('~/assets/content/cars/', false, /\.json$/)
         await commit(SET_CAR_POSTS, actions.getPosts(carFiles))
         await commit(SET_RESERVATIONS, actions.getReservds())
+
+        /*let user = auth.currentUser
+        console.log('nuxtServerInitUser=' + user)
+
         await commit(SET_LOGGED_USER, actions.isUserLoggerIn())
-        await commit(SET_LOGGED_ADMIN, actions.isAdminLoggedIn())
+        console.log('nuxtServerInitAdmin=' + actions.isAdminLoggedIn())
+        await commit(SET_LOGGED_ADMIN, actions.isAdminLoggedIn())*/
     },
     async onAuthStateChangedAction(state, { authUser, claims }) {
         if (!authUser) {

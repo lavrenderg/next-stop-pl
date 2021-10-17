@@ -21,6 +21,23 @@ export default {
     UserAuthForm,
   },
   methods: {
+    adminIsLoggedIn() {
+      let isAdminLoggedBool = false
+      if (this.$fire.auth.currentUser != null) {
+        this.$fire.database.ref('Admins/').on('value', (snapshot) => {
+          snapshot.forEach((childSnapshot) => {
+            if (childSnapshot.key === this.$fire.auth.currentUser.uid) {
+              console.log('key=' + childSnapshot.key + '  currentUseUid=' + this.$fire.auth.currentUser.uid)
+              isAdminLoggedBool = true
+            }
+          })
+        })
+        console.log('Admin=' + isAdminLoggedBool)
+        return isAdminLoggedBool
+      } else {
+        return false
+      }
+    },
     async loginUser(loginDetails) {
       let that = this
       this.$fire.auth.signInWithEmailAndPassword(loginDetails.email, loginDetails.password).catch(function (error) {
@@ -28,11 +45,10 @@ export default {
         that.errMessage = error.message
       })
       if (this.$fire.auth.currentUser != null) {
-        this.$store.commit('SET_LOGGED_USER', true)
-        if (this.$fire.auth.currentUser.uid === 'gQf6xebhWqYXYzU3OIz39y45Glm1') {
-          this.$store.commit('SET_LOGGED_ADMIN', true)
+        this.$store.commit('setLoggedUser', true)
+        if (this.adminIsLoggedIn()) {
+          this.$store.commit('setLoggedAdmin', true)
         }
-        //window.location.reload(true)
         this.$router.push('/')
       }
     },
