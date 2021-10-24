@@ -1,5 +1,9 @@
 import { SET_CAR_POSTS, SET_RESERVATIONS, SET_LOGGED_USER, SET_LOGGED_ADMIN } from './mutations.type'
-import { db, auth } from "../plugins/firebase"
+import { firebase, db, auth } from "../plugins/firebase"
+import Cookie from 'js-cookie'
+import JWTDecode from 'jwt-decode'
+import cookieparser from 'cookieparser'
+
 export const state = () => ({
     carPosts: [],
     user: null,
@@ -16,8 +20,8 @@ export const mutations = {
     [SET_CAR_POSTS](state, list) {
         state.carPosts = list
     },
-    SET_USER(state, user) {
-        state.user = user
+    SET_USER(state, account) {
+        state.user = account
     },
     [SET_RESERVATIONS](state, val) {
         state.reservations = val
@@ -43,6 +47,27 @@ export const mutations = {
 }
 
 export const actions = {
+    async login({ commit }, account) {
+        try {
+            await auth.signInWithEmailAndPassword(account.email, account.password)
+
+            const token = await auth.currentUser.getIdToken()
+            const { email, uid } = auth.currentUser
+            Cookie.set('access_token', token)
+            commit('SET_USER', { email, uid })
+
+            db.ref('Admins/').on('value', (snapshot) => {
+                snapshot.forEach((childSnapshot) => {
+                    if (childSnapshot.key === uid) {
+                        commit(SET_LOGGED_ADMIN, true)
+                    }
+                })
+            })
+
+        } catch (error) {
+            throw error
+        }
+    },
     getReservds() {
         let reservsArray = []
         db.ref('Reservations/')
@@ -82,17 +107,32 @@ export const actions = {
             return false
         }
     },
-    async nuxtServerInit({ commit }) {
+    async nuxtServerInit({ commit }, { req }) {
         let carFiles = await require.context('~/assets/content/cars/', false, /\.json$/)
         await commit(SET_CAR_POSTS, actions.getPosts(carFiles))
         await commit(SET_RESERVATIONS, actions.getReservds())
 
-        /*let user = auth.currentUser
-        console.log('nuxtServerInitUser=' + user)
+        if (process.server && process.static) return
+        if (!req.headers.cookie) return
 
-        await commit(SET_LOGGED_USER, actions.isUserLoggerIn())
-        console.log('nuxtServerInitAdmin=' + actions.isAdminLoggedIn())
-        await commit(SET_LOGGED_ADMIN, actions.isAdminLoggedIn())*/
+        const parsed = cookieparser.parse(req.headers.cookie)
+        const accessTokenCookie = parsed.access_token
+
+        if (!accessTokenCookie) return
+        const decoded = JWTDecode(accessTokenCookie)
+        if (decoded) {
+            commit('SET_USER', {
+                uid: decoded.user_id,
+                email: decoded.email
+            })
+            db.ref('Admins/').on('value', (snapshot) => {
+                snapshot.forEach((childSnapshot) => {
+                    if (childSnapshot.key === decoded.user_id) {
+                        commit(SET_LOGGED_ADMIN, true)
+                    }
+                })
+            })
+        }
     },
     async onAuthStateChangedAction(state, { authUser, claims }) {
         if (!authUser) {

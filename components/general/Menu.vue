@@ -35,13 +35,14 @@
 </template>
 
 <script>
+import Cookie from 'js-cookie'
 export default {
   methods: {
     logout() {
       $nuxt.$fire.auth.signOut()
-      this.$store.commit('setLoggedUser', false)
+      Cookie.remove('access_token')
       this.$store.commit('setLoggedAdmin', false)
-      this.$router.push('/login')
+      location.href = '/login'
     },
     closeMenu() {
       this.$emit('closeMenu')
@@ -49,7 +50,7 @@ export default {
   },
   computed: {
     userIsLoggedIn() {
-      return this.$store.state.userIsLoggedIn
+      return this.$store.state.user != null
     },
     adminIsLoggedIn() {
       return this.$store.state.adminIsLoggedIn
