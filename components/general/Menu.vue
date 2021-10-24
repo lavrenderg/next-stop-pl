@@ -53,6 +53,7 @@ export default {
       return this.$store.state.user != null
     },
     adminIsLoggedIn() {
+      console.log('adminIsLoggedIn=' + this.$store.state.adminIsLoggedIn)
       return this.$store.state.adminIsLoggedIn
     },
   },

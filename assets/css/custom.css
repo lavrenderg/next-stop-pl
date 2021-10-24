@@ -99,9 +99,9 @@
 
 .quick_reservation {
     width: fit-content;
-    height: 200px;
+    height: fit-content;
     margin-left: 110px;
-    top: 60px;
+    top: 40px;
     padding: 30px;
     position: absolute;
 }
