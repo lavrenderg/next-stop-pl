@@ -114,9 +114,10 @@ export const actions = {
     },
     async nuxtServerInit({ commit }, { req }) {
         let carFiles = await require.context('~/assets/content/cars/', false, /\.json$/)
+        await commit(SET_LOGGED_ADMIN, actions.isAdminLoggedIn(req.headers.cookie))
         await commit(SET_CAR_POSTS, actions.getPosts(carFiles))
         await commit(SET_RESERVATIONS, actions.getReservds())
-        await commit(SET_LOGGED_ADMIN, actions.isAdminLoggedIn(req.headers.cookie))
+
 
         if (process.server && process.static) return
         if (!req.headers.cookie) return
