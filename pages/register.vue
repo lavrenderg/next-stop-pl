@@ -52,7 +52,7 @@ export default {
         })
 
         this.$store.commit('setLoggedUser', true)
-        this.$store.commit('SET_LOGGED_ADMIN', false)
+        this.$store.commit('setLoggedAdmin', false)
         this.$router.push('/')
       }
     },
