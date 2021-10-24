@@ -41,7 +41,7 @@ export const mutations = {
     [SET_LOGGED_USER](state, val) {
         state.userIsLoggedIn = val
     },
-    [SET_LOGGED_ADMIN](state, val) {
+    SET_LOGGED_ADMIN(state, val) {
         state.adminIsLoggedIn = val
     }
 }
@@ -59,7 +59,6 @@ export const actions = {
             db.ref('Admins/').on('value', (snapshot) => {
                 snapshot.forEach((childSnapshot) => {
                     if (childSnapshot.key === uid) {
-                        console.log('login::snapshot=' + childSnapshot.key + "  user_id=" + decoded.user_id)
                         commit(SET_LOGGED_ADMIN, true)
                     }
                 })
@@ -129,8 +128,7 @@ export const actions = {
             db.ref('Admins/').on('value', (snapshot) => {
                 snapshot.forEach((childSnapshot) => {
                     if (childSnapshot.key === decoded.user_id) {
-                        console.log('nuxtServerInit::snapshot=' + childSnapshot.key + "  user_id=" + decoded.user_id)
-                        commit(SET_LOGGED_ADMIN, true)
+                        commit('SET_LOGGED_ADMIN', true)
                     }
                 })
             })
