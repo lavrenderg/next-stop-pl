@@ -99,7 +99,7 @@
 
 .quick_reservation {
     width: fit-content;
-    height: fit-content;
+    height: 30%;
     margin-left: 110px;
     top: 40px;
     padding: 30px;
@@ -297,9 +297,8 @@
     position: absolute;
     left: 550px;
     right: 550px;
-    margin-top: 10px;
     background-color: #ffffff;
-    opacity: 70%;
+    opacity: 0.7;
 }
 
 .car_reservation_info {

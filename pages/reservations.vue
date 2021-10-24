@@ -66,6 +66,7 @@ export default {
   },
   computed: {
     getReservations() {
+      console.log('Number of reservations=' + this.$store.state.reservations.length)
       return this.$store.state.reservations
     },
     carPosts() {
