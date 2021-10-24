@@ -134,7 +134,7 @@ export const actions = {
             db.ref('Admins/').on('value', (snapshot) => {
                 snapshot.forEach((childSnapshot) => {
                     if (childSnapshot.key === decoded.user_id) {
-                        commit('setLoggedAdmin', true)
+                        commit(SET_LOGGED_ADMIN, true)
                     }
                 })
             })

@@ -41,7 +41,7 @@ export default {
     logout() {
       $nuxt.$fire.auth.signOut()
       Cookie.remove('access_token')
-      this.$store.commit('SET_LOGGED_ADMIN', false)
+      this.$store.commit('setLoggedAdmin', false)
       location.href = '/login'
     },
     closeMenu() {
