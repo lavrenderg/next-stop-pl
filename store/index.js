@@ -129,16 +129,16 @@ export const actions = {
         const decoded = JWTDecode(accessTokenCookie)
         if (decoded) {
             commit('SET_USER', {
-                uid: decoded.user_id,
-                email: decoded.email
-            })
-            db.ref('Admins/').on('value', (snapshot) => {
-                snapshot.forEach((childSnapshot) => {
-                    if (childSnapshot.key === decoded.user_id) {
-                        commit(SET_LOGGED_ADMIN, true)
-                    }
+                    uid: decoded.user_id,
+                    email: decoded.email
                 })
-            })
+                /*db.ref('Admins/').on('value', (snapshot) => {
+                    snapshot.forEach((childSnapshot) => {
+                        if (childSnapshot.key === decoded.user_id) {
+                            commit(SET_LOGGED_ADMIN, true)
+                        }
+                    })
+                })*/
         }
     },
     async onAuthStateChangedAction(state, { authUser, claims }) {
