@@ -59,6 +59,7 @@ export const actions = {
             db.ref('Admins/').on('value', (snapshot) => {
                 snapshot.forEach((childSnapshot) => {
                     if (childSnapshot.key === uid) {
+                        Cookie.set('adminLogged', true)
                         commit(SET_LOGGED_ADMIN, true)
                     }
                 })
@@ -90,7 +91,7 @@ export const actions = {
     isUserLoggerIn() {
         return auth.currentUser != null
     },
-    isAdminLoggedIn(cookie) {
+    /*isAdminLoggedIn(cookie) {
         let adminIsLogged = false
 
         if (process.server && process.static) return
@@ -111,10 +112,10 @@ export const actions = {
             })
         }
         return adminIsLogged
-    },
+    },*/
     async nuxtServerInit({ commit }, { req }) {
         let carFiles = await require.context('~/assets/content/cars/', false, /\.json$/)
-        await commit(SET_LOGGED_ADMIN, actions.isAdminLoggedIn(req.headers.cookie))
+            //await commit(SET_LOGGED_ADMIN, actions.isAdminLoggedIn(req.headers.cookie))
         await commit(SET_CAR_POSTS, actions.getPosts(carFiles))
             //await commit(SET_RESERVATIONS, actions.getReservds())
 
@@ -124,6 +125,7 @@ export const actions = {
 
         const parsed = cookieparser.parse(req.headers.cookie)
         const accessTokenCookie = parsed.access_token
+        const adminLoggedCookie = parsed.adminLogged
 
         if (!accessTokenCookie) return
         const decoded = JWTDecode(accessTokenCookie)
@@ -139,6 +141,11 @@ export const actions = {
                         }
                     })
                 })*/
+        }
+        if (!adminLoggedCookie) return
+        const decoded2 = JWTDecode(adminLoggedCookie)
+        if (decoded2) {
+            commit(SET_LOGGED_ADMIN, decoded2.adminLogged)
         }
     },
     async onAuthStateChangedAction(state, { authUser, claims }) {
