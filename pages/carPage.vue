@@ -243,7 +243,18 @@ export default {
   },
   computed: {
     getReservations() {
-      return this.$store.state.reservations
+      //return this.$store.state.reservations
+      let reservsArray = []
+      this.$fire.database
+        .ref('Reservations/')
+        .orderByChild('IsHidden')
+        .equalTo(0)
+        .on('value', (snapshot) => {
+          snapshot.forEach((childSnapshot) => {
+            reservsArray.push(childSnapshot)
+          })
+        })
+      return reservsArray
     },
     carPosts() {
       return this.$store.state.carPosts
@@ -256,13 +267,13 @@ export default {
           cars.push(car)
         }
         this.getReservations.forEach((res) => {
-          var rPickupDate = new Date(res.PickupDate)
-          var rReturnDate = new Date(res.ReturnDate)
+          var rPickupDate = new Date(res.val().PickupDate)
+          var rReturnDate = new Date(res.val().ReturnDate)
           var dPickupDate = new Date(this.pickupDate)
           var dReturnDate = new Date(this.returnDate)
           var maxStartDate = new Date(Math.max(rPickupDate, dPickupDate))
           var minEndDate = new Date(Math.min(rReturnDate, dReturnDate))
-          if (maxStartDate < minEndDate && car.vin === res.vin) {
+          if (maxStartDate < minEndDate && car.vin === res.val().vin) {
             carIsAvailable = false
           }
         })

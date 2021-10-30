@@ -27,14 +27,14 @@
       <ReservationDetails
         v-for="(reservation, index) in this.filteredReservations"
         :key="index"
-        :carBrand="carBrand(reservation.vin)"
-        :carModel="carModel(reservation.vin)"
-        :reservationStartDate="reservation.PickupDate"
-        :reservationEndDate="reservation.ReturnDate"
-        :status="reservation.Status"
-        :pickupLocation="reservation.PickupLocation"
-        :returnLocation="reservation.ReturnLocation"
-        :reservation="reservation.ReservationId"
+        :carBrand="carBrand(reservation.val().vin)"
+        :carModel="carModel(reservation.val().vin)"
+        :reservationStartDate="reservation.val().PickupDate"
+        :reservationEndDate="reservation.val().ReturnDate"
+        :status="reservation.val().Status"
+        :pickupLocation="reservation.val().PickupLocation"
+        :returnLocation="reservation.val().ReturnLocation"
+        :reservation="reservation.val().ReservationId"
       />
     </v-container>
   </v-app>
@@ -66,8 +66,19 @@ export default {
   },
   computed: {
     getReservations() {
-      console.log('Number of reservations=' + this.$store.state.reservations.length)
-      return this.$store.state.reservations
+      /*console.log('Number of reservations=' + this.$store.state.reservations.length)
+      return this.$store.state.reservations*/
+      let reservsArray = []
+      this.$fire.database
+        .ref('Reservations/')
+        .orderByChild('IsHidden')
+        .equalTo(0)
+        .on('value', (snapshot) => {
+          snapshot.forEach((childSnapshot) => {
+            reservsArray.push(childSnapshot)
+          })
+        })
+      return reservsArray
     },
     carPosts() {
       return this.$store.state.carPosts

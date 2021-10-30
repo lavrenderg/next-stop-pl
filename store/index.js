@@ -7,7 +7,7 @@ import cookieparser from 'cookieparser'
 export const state = () => ({
     carPosts: [],
     user: null,
-    reservations: [],
+    //reservations: [],
     pickupDate: '',
     returnDate: '',
     pickupLocation: '',
@@ -23,9 +23,9 @@ export const mutations = {
     SET_USER(state, account) {
         state.user = account
     },
-    [SET_RESERVATIONS](state, val) {
+    /*[SET_RESERVATIONS](state, val) {
         state.reservations = val
-    },
+    },*/
     SET_PICKUP_DATE(state, val) {
         state.pickupDate = val
     },
@@ -68,7 +68,7 @@ export const actions = {
             throw error
         }
     },
-    getReservds() {
+    /*getReservds() {
         let reservsArray = []
         db.ref('Reservations/')
             .orderByChild('IsHidden')
@@ -79,7 +79,7 @@ export const actions = {
                 })
             })
         return reservsArray
-    },
+    },*/
     getPosts(files) {
         return files.keys().map((key) => {
             let res = files(key)
@@ -116,7 +116,7 @@ export const actions = {
         let carFiles = await require.context('~/assets/content/cars/', false, /\.json$/)
         await commit(SET_LOGGED_ADMIN, actions.isAdminLoggedIn(req.headers.cookie))
         await commit(SET_CAR_POSTS, actions.getPosts(carFiles))
-        await commit(SET_RESERVATIONS, actions.getReservds())
+            //await commit(SET_RESERVATIONS, actions.getReservds())
 
 
         if (process.server && process.static) return
