@@ -59,7 +59,7 @@ export const actions = {
             db.ref('Admins/').on('value', (snapshot) => {
                 snapshot.forEach((childSnapshot) => {
                     if (childSnapshot.key === uid) {
-                        Cookie.set('adminLogged', true)
+                        Cookie.set('adminLogged', true, { expires: 1 })
                         commit(SET_LOGGED_ADMIN, true)
                     }
                 })
@@ -143,10 +143,7 @@ export const actions = {
                 })*/
         }
         if (!adminLoggedCookie) return
-        const decoded2 = JWTDecode(adminLoggedCookie)
-        if (decoded2) {
-            commit(SET_LOGGED_ADMIN, decoded2.adminLogged)
-        }
+        commit(SET_LOGGED_ADMIN, Cookie.get('adminLogged'))
     },
     async onAuthStateChangedAction(state, { authUser, claims }) {
         if (!authUser) {
