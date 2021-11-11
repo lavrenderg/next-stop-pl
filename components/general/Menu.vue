@@ -42,6 +42,7 @@ export default {
       $nuxt.$fire.auth.signOut()
       Cookie.remove('access_token')
       this.$store.commit('setLoggedAdmin', false)
+      Cookie.set('adminLogged', 'false')
       location.href = '/login'
     },
     closeMenu() {
@@ -53,6 +54,7 @@ export default {
       return this.$store.state.user != null
     },
     adminIsLoggedIn() {
+      console.log('Menu adminIsLoggedIn = ' + this.$store.state.adminIsLoggedIn)
       return this.$store.state.adminIsLoggedIn
     },
   },
