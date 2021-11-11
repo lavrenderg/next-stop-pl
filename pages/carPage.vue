@@ -153,7 +153,7 @@
           elevation="9"
           width="fit-content"
           class="car_description"
-          v-for="(carPost, index) in sortedCars"
+          v-for="(carPost, index) in uniqueCars"
           :key="index"
         >
           <v-img :src="carPost.img" max-height="100" max-width="200"></v-img>
@@ -327,6 +327,18 @@ export default {
       if (this.sort.sortBy === '') {
         return this.filteredCars
       }
+    },
+    uniqueCars() {
+      let cars = []
+      var i
+      for (i = 0; i < this.sortedCars.length; i++) {
+        const car = this.sortedCars[i]
+        if (!cars.includes(car)) {
+          cars.push(car)
+        }
+      }
+      console.log('cars.length=' + cars.length)
+      return cars
     },
     carModels() {
       var i
