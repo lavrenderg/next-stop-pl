@@ -22,7 +22,7 @@
         <v-btn text to="/reservations">Rezerwacje</v-btn>
         <v-btn @click="logout" text>Logout</v-btn>
       </div>
-      <div v-show="this.userIsLoggedIn">
+      <div v-show="this.userIsLoggedIn && !this.adminIsLoggedIn">
         <v-btn text to="/myReservations">Moje rezerwacje</v-btn>
         <v-btn @click="logout" text>Logout</v-btn>
       </div>

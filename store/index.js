@@ -145,6 +145,15 @@ export const actions = {
             })
         } else {
             const { uid, email } = authUser
+
+            db.ref('Admins/').on('value', (snapshot) => {
+                snapshot.forEach((childSnapshot) => {
+                    if (childSnapshot.key === uid) {
+                        state.commit('SET_LOGGED_ADMIN', true)
+                    }
+                })
+            })
+
             state.commit('SET_USER', {
                 uid,
                 email,
