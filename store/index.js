@@ -1,4 +1,4 @@
-import { SET_CAR_POSTS, SET_RESERVATIONS, SET_LOGGED_USER, SET_LOGGED_ADMIN } from './mutations.type'
+import { SET_CAR_POSTS, SET_RESERVATIONS, SET_LOGGED_USER } from './mutations.type'
 import { firebase, db, auth } from "../plugins/firebase"
 import Cookie from 'js-cookie'
 import JWTDecode from 'jwt-decode'
@@ -41,7 +41,7 @@ export const mutations = {
     [SET_LOGGED_USER](state, val) {
         state.userIsLoggedIn = val
     },
-    [SET_LOGGED_ADMIN](state, val) {
+    SET_LOGGED_ADMIN(state, val) {
         state.adminIsLoggedIn = val
     }
 }
@@ -61,7 +61,7 @@ export const actions = {
                     if (childSnapshot.key === uid) {
                         Cookie.set('adminLogged', 'true')
                         console.log("Admin = " + Cookie.get('adminLogged'))
-                        commit(SET_LOGGED_ADMIN, true)
+                        commit('SET_LOGGED_ADMIN', true)
                     }
                 })
             })
@@ -132,7 +132,7 @@ export const actions = {
 
         if (!adminCookie) return
         if (adminCookie === 'true') {
-            commit(SET_LOGGED_ADMIN, true)
+            commit('SET_LOGGED_ADMIN', true)
         }
         //if (!adminLoggedCookie) return
 

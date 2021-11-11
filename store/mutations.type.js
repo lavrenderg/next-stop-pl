@@ -1,5 +1,5 @@
 export const SET_CAR_POSTS = 'setCarPosts'
 export const SET_USER = 'setUser'
 export const SET_RESERVATIONS = 'setReservations'
-export const SET_LOGGED_ADMIN = 'setLoggedAdmin'
+    //export const SET_LOGGED_ADMIN = 'setLoggedAdmin'
 export const SET_LOGGED_USER = 'setLoggedUser'
