@@ -15,6 +15,8 @@ const dynamicRoutes = getDynamicPaths({
 
 export default {
     // ? The env Property: https://nuxtjs.org/api/configuration-env/
+
+    css: ['@/assets/css/custom.css'],
     env: {
         url: process.env.NODE_ENV === 'production' ?
             process.env.URL || 'http://createADotEnvFileAndSetURL' : 'http://localhost:3000',
@@ -48,12 +50,12 @@ export default {
     /*
      ** Customize the progress-bar color
      */
-    loading: { color: '#f3f5f4' },
+    components: true,
+    loading: '~/components/general/Loading.vue',
     /*
      ** Global CSS
      */
     //css: ['@/assets/css/tailwind.css', '@/assets/css/main.pcss'],
-    css: ['@/assets/css/custom.css'],
     /*
      ** Plugins to load before mounting the App
      */

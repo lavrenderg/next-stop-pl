@@ -70,18 +70,6 @@ export const actions = {
             throw error
         }
     },
-    /*getReservds() {
-        let reservsArray = []
-        db.ref('Reservations/')
-            .orderByChild('IsHidden')
-            .equalTo(0)
-            .on('value', (snapshot) => {
-                snapshot.forEach((childSnapshot) => {
-                    reservsArray.push(childSnapshot)
-                })
-            })
-        return reservsArray
-    },*/
     getPosts(files) {
         return files.keys().map((key) => {
             let res = files(key)
@@ -103,9 +91,6 @@ export const actions = {
     async nuxtServerInit({ commit }, { req }) {
         let carFiles = await require.context('~/assets/content/cars/', false, /\.json$/)
         await commit(SET_CAR_POSTS, actions.getPosts(carFiles))
-            //await commit(SET_LOGGED_ADMIN, Cookie.get('adminLogged'))
-            //await commit(SET_RESERVATIONS, actions.getReservds())
-
 
         if (process.server && process.static) return
         if (!req.headers.cookie) return
@@ -118,16 +103,9 @@ export const actions = {
         const decoded = JWTDecode(accessTokenCookie)
         if (decoded) {
             commit('SET_USER', {
-                    uid: decoded.user_id,
-                    email: decoded.email
-                })
-                /*db.ref('Admins/').on('value', (snapshot) => {
-                    snapshot.forEach((childSnapshot) => {
-                        if (childSnapshot.key === decoded.user_id) {
-                            commit(SET_LOGGED_ADMIN, true)
-                        }
-                    })
-                })*/
+                uid: decoded.user_id,
+                email: decoded.email
+            })
         }
 
         if (!adminCookie) return

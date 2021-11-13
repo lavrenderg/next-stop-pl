@@ -1,5 +1,17 @@
 <template>
   <v-app>
+    <div
+      id="loadOverlay"
+      style="
+        background-color: #def2f1;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+        z-index: 2000;
+      "
+    ></div>
     <div class="background">
       <div class="quich_reservation_div">
         <div class="bg_image"></div>
@@ -180,6 +192,15 @@ export default {
 
       window.location.href = 'http://localhost:3000/carPage'
     },
+  },
+  mounted() {
+    /*this.$nextTick(() => {
+    this.$nuxt.$loading.start()
+    setTimeout(() => this.$nuxt.$loading.finish(), 1000)
+    })*/
+    $(document).ready(function () {
+      $('#loadOverlay').css('display', 'none')
+    })
   },
 }
 </script>
