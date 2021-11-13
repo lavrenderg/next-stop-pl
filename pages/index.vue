@@ -198,9 +198,9 @@ export default {
     this.$nuxt.$loading.start()
     setTimeout(() => this.$nuxt.$loading.finish(), 1000)
     })*/
-    $(document).ready(function () {
-      $('#loadOverlay').css('display', 'none')
-    })
+    //$(document).ready(function () {
+    $('#loadOverlay').css('display', 'none')
+    //})
   },
 }
 </script>
