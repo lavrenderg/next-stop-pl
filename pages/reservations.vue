@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <div class="grey_backgound1">
+    <div v-if="this.adminIsLoggedIn" class="grey_backgound1">
       <v-row>
         <p class="stat_loc_p">Status rezerwacji :</p>
         <v-checkbox
@@ -22,7 +22,7 @@
         ></v-checkbox>
       </v-row>
     </div>
-    <v-container fluid class="reservations_container">
+    <v-container v-if="this.adminIsLoggedIn" fluid class="reservations_container">
       <v-btn to="/registerAdmin" class="add_new_admin_account">Dodaj nowe konto</v-btn>
       <ReservationDetails
         v-for="(reservation, index) in this.filteredReservations"
@@ -62,38 +62,48 @@ export default {
       ],
       selectedStatuses: [],
       selectedLocations: [],
+      reservations: [],
     }
   },
   computed: {
+    adminIsLoggedIn() {
+      console.log('Menu adminIsLoggedIn = ' + this.$store.state.adminIsLoggedIn)
+      return this.$store.state.adminIsLoggedIn
+    },
+    carPosts() {
+      return this.$store.state.carPosts
+    },
+    filteredReservations() {
+      this.getReservations()
+      let res = this.reservations.filter((res) => {
+        //console.log('Res : ' + res.val().Status)
+        return (
+          (this.selectedStatuses.includes(res.val().Status) &&
+            this.selectedLocations.includes(res.val().PickupLocation)) ||
+          (this.selectedStatuses.includes(res.val().Status) && this.selectedLocations.length === 0) ||
+          (this.selectedStatuses.length === 0 && this.selectedLocations.includes(res.val().PickupLocation)) ||
+          (this.selectedStatuses.length === 0 && this.selectedLocations.length === 0)
+        )
+      })
+
+      console.log('Filtered reservations : ' + res.length)
+      return res
+    },
+  },
+  methods: {
     getReservations() {
-      /*console.log('Number of reservations=' + this.$store.state.reservations.length)
-      return this.$store.state.reservations*/
-      let reservsArray = []
+      this.reservations = []
       this.$fire.database
         .ref('Reservations/')
         .orderByChild('IsHidden')
         .equalTo(0)
         .on('value', (snapshot) => {
           snapshot.forEach((childSnapshot) => {
-            reservsArray.push(childSnapshot)
+            this.reservations.push(childSnapshot)
           })
         })
-      return reservsArray
+      console.log('reservationsPage=' + this.reservations.length)
     },
-    carPosts() {
-      return this.$store.state.carPosts
-    },
-    filteredReservations() {
-      return this.getReservations.filter((res) => {
-        return (
-          this.selectedStatuses.includes(res.Status) ||
-          this.selectedLocations.includes(res.PickupLocation) ||
-          (this.selectedStatuses.length === 0 && this.selectedLocations.length === 0)
-        )
-      })
-    },
-  },
-  methods: {
     carBrand(vin) {
       let carB = ''
       this.carPosts.forEach((car) => {
@@ -113,5 +123,10 @@ export default {
       return carM
     },
   },
+  /*mounted() {
+    if (!this.adminIsLoggedIn) {
+      window.location.href = '/myReservations'
+    }
+  },*/
 }
 </script>

@@ -60,7 +60,6 @@ export default {
             })
           })
       }
-      console.log('computing..' + this.reservations.length)
     },
     carBrand(vin) {
       let carB = ''
