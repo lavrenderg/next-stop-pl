@@ -190,7 +190,7 @@ export default {
       this.$store.commit('SET_RETURN_DATE', this.returnDate)
       this.$store.commit('SET_PICKUP_LOCATION', this.pickupLocation)
 
-      window.location.href = 'http://localhost:3000/carPage'
+      window.location.href = 'https://mystifying-clarke-3feada.netlify.app/carPage'
     },
   },
   mounted() {
