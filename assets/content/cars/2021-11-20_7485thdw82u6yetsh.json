@@ -1,0 +1,15 @@
+{
+  "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/1998-2001_BMW_328i_%28E46%29_sedan_%282011-07-17%29_01.jpg/1920px-1998-2001_BMW_328i_%28E46%29_sedan_%282011-07-17%29_01.jpg",
+  "transmission": "Manualna",
+  "brand": "BMW",
+  "price": 74,
+  "model": "Seria 3",
+  "trunkCapacity": 401,
+  "seats": 4,
+  "segment": "D",
+  "vin": "7485THDW82U6YETSH",
+  "engineType": "Benzyna",
+  "locations": [
+    "Oddział Nr 3 - ul. Komandorska, 53"
+  ]
+}
