@@ -1,0 +1,13 @@
+{
+  "img": "https://upload.wikimedia.org/wikipedia/commons/4/41/2017_Audi_Q5_S_Line_TFSi_Quattro_2.0_Front.jpg",
+  "transmission": "Automatyczna",
+  "brand": "Audi",
+  "price": 105,
+  "model": "Q5",
+  "trunkCapacity": 411,
+  "seats": 5,
+  "segment": "D",
+  "location": "Oddział Nr 1 - ul. Graniczna, 159",
+  "vin": "234THFTSBGN819305",
+  "engineType": "Hybryda"
+}
