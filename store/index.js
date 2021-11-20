@@ -60,7 +60,6 @@ export const actions = {
                 snapshot.forEach((childSnapshot) => {
                     if (childSnapshot.key === uid) {
                         Cookie.set('adminLogged', 'true')
-                        console.log("Admin = " + Cookie.get('adminLogged'))
                         commit('SET_LOGGED_ADMIN', true)
                     }
                 })
@@ -81,7 +80,6 @@ export const actions = {
         return auth.currentUser != null
     },
     isAdminLoggedIn() {
-        console.log('Admin is logged = ' + Cookie.get('adminLogged') === 'true')
         let admin = false
         if (Cookie.get('adminLogged') === 'true') {
             admin = true

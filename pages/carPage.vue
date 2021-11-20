@@ -284,8 +284,7 @@ export default {
       return cars
     },
     filteredCars() {
-      console.log('pickupLoc = ' + this.pickupLocation)
-      console.log('pickupLoc2 = ' + this.$store.state.pickupLocation)
+      console.log('PickUp location = ' + this.pickupLocation)
       return this.availableCars.filter((car) => {
         return (
           (this.selectedModels.includes(car.brand) || this.selectedModels.length === 0) &&
@@ -337,7 +336,6 @@ export default {
           cars.push(car)
         }
       }
-      console.log('cars.length=' + cars.length)
       return cars
     },
     carModels() {

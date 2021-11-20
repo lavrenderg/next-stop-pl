@@ -45,7 +45,7 @@ export default {
   ],
   data() {
     return {
-      statuses: ['Nowa', 'Potwierdzona', 'W trakcie', 'Anulowana', 'Wygasła'],
+      statuses: ['Nowa', 'Potwierdzona', 'W trakcie', 'Anulowana', 'Zakończona'],
       newStatus: this.status,
     }
   },

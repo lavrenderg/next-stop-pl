@@ -83,7 +83,7 @@
         <splide :options="options">
           <splide-slide v-for="(carPost, index) in carPosts" :key="index">
             <img :src="carPost.img" />
-            <div class="car_post_slider">
+            <div @click="redirect" class="car_post_slider">
               <h3>{{ carPost.model }}</h3>
               <h5>Od {{ carPost.price }} zł</h5>
             </div>
@@ -185,12 +185,15 @@ export default {
     },
   },
   methods: {
+    redirect() {
+      window.location.href = 'https://mystifying-clarke-3feada.netlify.app/carPage'
+    },
     addFiltersAndSearchCars() {
       this.$store.commit('SET_PICKUP_DATE', this.pickupDate)
       this.$store.commit('SET_RETURN_DATE', this.returnDate)
       this.$store.commit('SET_PICKUP_LOCATION', this.pickupLocation)
 
-      window.location.href = 'https://mystifying-clarke-3feada.netlify.app/carPage'
+      this.$router.push('/carPage')
     },
   },
   mounted() {

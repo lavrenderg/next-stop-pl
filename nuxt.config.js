@@ -171,7 +171,6 @@ export default {
  * ]
  */
 function getDynamicPaths(urlFilepathTable, cwdPath) {
-    console.log('Going to generate dynamicRoutes for these collection types: ', urlFilepathTable)
     const dynamicPaths = [].concat(
         ...Object.keys(urlFilepathTable).map(url => {
             const filepathGlob = urlFilepathTable[url]
@@ -180,6 +179,5 @@ function getDynamicPaths(urlFilepathTable, cwdPath) {
             })
         })
     )
-    console.log('Found these dynamicPaths that will be SSR generated:', dynamicPaths)
     return dynamicPaths
 }

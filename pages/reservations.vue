@@ -54,7 +54,7 @@ export default {
   },
   data() {
     return {
-      statuses: ['Nowa', 'Potwierdzona', 'W trakcie', 'Anulowana', 'Wygasła'],
+      statuses: ['Nowa', 'Potwierdzona', 'W trakcie', 'Anulowana', 'Zakończona'],
       locations: [
         'Oddział Nr 1 - ul. Graniczna, 159',
         'Oddział Nr 2 - ul. Ceglana, 3',
@@ -67,7 +67,6 @@ export default {
   },
   computed: {
     adminIsLoggedIn() {
-      console.log('Menu adminIsLoggedIn = ' + this.$store.state.adminIsLoggedIn)
       return this.$store.state.adminIsLoggedIn
     },
     carPosts() {
@@ -76,7 +75,6 @@ export default {
     filteredReservations() {
       this.getReservations()
       let res = this.reservations.filter((res) => {
-        //console.log('Res : ' + res.val().Status)
         return (
           (this.selectedStatuses.includes(res.val().Status) &&
             this.selectedLocations.includes(res.val().PickupLocation)) ||
@@ -85,8 +83,6 @@ export default {
           (this.selectedStatuses.length === 0 && this.selectedLocations.length === 0)
         )
       })
-
-      console.log('Filtered reservations : ' + res.length)
       return res
     },
   },
@@ -102,7 +98,6 @@ export default {
             this.reservations.push(childSnapshot)
           })
         })
-      console.log('reservationsPage=' + this.reservations.length)
     },
     carBrand(vin) {
       let carB = ''
@@ -123,10 +118,5 @@ export default {
       return carM
     },
   },
-  /*mounted() {
-    if (!this.adminIsLoggedIn) {
-      window.location.href = '/myReservations'
-    }
-  },*/
 }
 </script>
