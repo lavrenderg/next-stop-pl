@@ -107,11 +107,10 @@
       </div>
     </v-card>
     <v-card class="after_car_reservation_div" v-if="showAfterReservationDiv">
-      <p>Dziękujemy za rezerwację samochodu, prosimy o dokonanie wpłaty na rachunek :</p>
-      <br />
-      <p>0000 0000 0000 0000</p>
-      <br />
+      <p>Dziękujemy za rezerwację samochodu, prosimy o dokonanie wpłaty za posśrednictwem servisu PayPal</p>
       w ciągu 2 dni albo do dnia daty obrioru samochodu. W przeciwnym przypadku rezerwacja zostanie anulowana.
+      <br />
+      <div class="paypal_img"></div>
     </v-card>
   </div>
 </template>
