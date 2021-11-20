@@ -1,0 +1,13 @@
+{
+  "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/2019_BMW_X5_M50d_Automatic_3.0.jpg/1200px-2019_BMW_X5_M50d_Automatic_3.0.jpg",
+  "transmission": "Automatyczna",
+  "brand": "BMW",
+  "price": 142,
+  "model": "X5",
+  "trunkCapacity": 387,
+  "seats": 5,
+  "segment": "E",
+  "location": "Oddział Nr 2 - ul. Ceglana, 3",
+  "vin": "HYR73956D3D456347",
+  "engineType": "Hybryda"
+}
