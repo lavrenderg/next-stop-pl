@@ -1,0 +1,15 @@
+{
+  "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/2018_BMW_630d_GT_M_Sport_Automatic_3.0_Front.jpg/1920px-2018_BMW_630d_GT_M_Sport_Automatic_3.0_Front.jpg",
+  "transmission": "Automatyczna",
+  "brand": "BMW",
+  "price": 143,
+  "model": "Seria 3 Gran Turismo",
+  "trunkCapacity": 316,
+  "seats": 3,
+  "segment": "E",
+  "vin": "Y72845TWUDF5T2H82",
+  "engineType": "Hybryda",
+  "locations": [
+    "Oddział Nr 3 - ul. Komandorska, 53"
+  ]
+}
