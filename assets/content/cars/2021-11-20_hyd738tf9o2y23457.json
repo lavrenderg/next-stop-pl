@@ -1,0 +1,15 @@
+{
+  "img": "https://upload.wikimedia.org/wikipedia/commons/e/e9/BMW_1-Series_F52_02_China_2017-04-05.jpg",
+  "transmission": "Automatyczna",
+  "brand": "BMW",
+  "price": 155,
+  "model": "Seria 1 Sedan",
+  "trunkCapacity": 345,
+  "seats": 4,
+  "segment": "C",
+  "vin": "HYD738TF9O2Y23457",
+  "engineType": "Hybryda",
+  "locations": [
+    "Oddział Nr 1 - ul. Graniczna, 159"
+  ]
+}
