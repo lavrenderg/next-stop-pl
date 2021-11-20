@@ -1,0 +1,13 @@
+{
+  "img": "https://upload.wikimedia.org/wikipedia/commons/4/4f/2017_Audi_A5_S_Line_Quattro_2.0_Front.jpg",
+  "transmission": "Manualna",
+  "brand": "Audi",
+  "price": 162,
+  "model": "A5",
+  "trunkCapacity": 352,
+  "seats": 5,
+  "segment": "D",
+  "location": "Oddział Nr 3 - ul. Komandorska, 53",
+  "vin": "HFY73515FF00RE645",
+  "engineType": "Diesel"
+}
