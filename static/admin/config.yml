@@ -58,4 +58,4 @@ collections:
       - {label: 'Pojemność bagażnika', name: 'trunkCapacity', widget: 'number', value_type: 'int'}
       - {label: 'Cena', name: 'price', widget: 'number', value_type: 'float'}
       - {label: 'Zdjęcie', name: 'img', widget: 'image'}
-      - {label: 'Lokalizacje', name: 'locations', widget: 'list', summary: '{{fields.location}}', field: {label: 'Lokalizacja', name: 'location', widget: 'string'}}
+      - {label: 'Lokalizacja', name: 'location', widget: 'select', options: ['Oddział Nr 1 - ul. Graniczna, 159', 'Oddział Nr 2 - ul. Ceglana, 3', 'Oddział Nr 3 - ul. Komandorska, 53']}
