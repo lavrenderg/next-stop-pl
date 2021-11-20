@@ -1,0 +1,13 @@
+{
+  "img": "https://upload.wikimedia.org/wikipedia/commons/7/70/Mercedes-Benz_C207_E_350_CDI_Iridiumsilber.JPG",
+  "transmission": "Automatyczna",
+  "brand": "Mercedes",
+  "price": 147,
+  "model": "E Coupe",
+  "trunkCapacity": 401,
+  "seats": 5,
+  "segment": "E",
+  "location": "Oddział Nr 3 - ul. Komandorska, 53",
+  "vin": "7384GDT6T3LDTEW67",
+  "engineType": "Diesel"
+}
