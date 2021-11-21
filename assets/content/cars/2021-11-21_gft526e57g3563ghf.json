@@ -1,0 +1,13 @@
+{
+  "img": "https://upload.wikimedia.org/wikipedia/commons/8/84/2017_Audi_S3_Black_Edition_TFSi_Quattro_2.0_Front.jpg",
+  "transmission": "Manualna",
+  "brand": "Audi",
+  "price": 93,
+  "model": "A3",
+  "trunkCapacity": 371,
+  "seats": 4,
+  "segment": "C",
+  "location": "Oddział Nr 3 - ul. Komandorska, 53",
+  "vin": "GFT526E57G3563GHF",
+  "engineType": "Diesel"
+}
