@@ -14,6 +14,9 @@ const dynamicRoutes = getDynamicPaths({
 )
 
 export default {
+    render: {
+        csp: true
+    },
     // ? The env Property: https://nuxtjs.org/api/configuration-env/
 
     css: ['@/assets/css/custom.css'],
