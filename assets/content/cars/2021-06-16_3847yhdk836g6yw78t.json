@@ -1,13 +1,13 @@
 {
-    "img": "/img/1200px-2018_skoda_karoq_edition_tdi_scr_4x4_2.0_front.jpg",
-    "transmission": "Manualna",
-    "brand": "Skoda",
-    "price": 115,
-    "model": "Karoq",
-    "trunkCapacity": 485,
-    "seats": 5,
-    "segment": "C",
-    "vin": "3847YHDK836G6YW78T",
-    "engineType": "Benzyna",
-    "location": "Oddział Nr 1 - ul. Graniczna, 159"
+  "img": "/img/1200px-2018_skoda_karoq_edition_tdi_scr_4x4_2.0_front-1-.jpg",
+  "transmission": "Manualna",
+  "brand": "Skoda",
+  "price": 115,
+  "model": "Karoq",
+  "trunkCapacity": 485,
+  "seats": 5,
+  "segment": "C",
+  "location": "Oddział Nr 1 - ul. Graniczna, 159",
+  "vin": "3847YHDK836G6YW78T",
+  "engineType": "Benzyna"
 }
