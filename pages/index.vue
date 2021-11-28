@@ -186,7 +186,7 @@ export default {
   },
   methods: {
     redirect() {
-      window.location.href = 'https://mystifying-clarke-3feada.netlify.app/carPage'
+      window.location.href = 'https://next-stop-pl.netlify.app/carPage'
     },
     addFiltersAndSearchCars() {
       this.$store.commit('SET_PICKUP_DATE', this.pickupDate)
