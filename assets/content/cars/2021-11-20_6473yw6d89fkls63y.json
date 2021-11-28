@@ -1,5 +1,5 @@
 {
-  "img": "https://upload.wikimedia.org/wikipedia/commons/4/4c/2018_BMW_X1_sDrive18i_xLine_1.5_Front.jpg",
+  "img": "/img/car9.jpg",
   "transmission": "Automatyczna",
   "brand": "BMW",
   "price": 155,
@@ -7,6 +7,7 @@
   "trunkCapacity": 425,
   "seats": 5,
   "segment": "C",
+  "location": "Oddział Nr 2 - ul. Ceglana, 3",
   "vin": "6473YW6D89FKLS63Y",
   "engineType": "Elektryczny",
   "locations": [
