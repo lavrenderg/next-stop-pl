@@ -13,17 +13,8 @@ const dynamicRoutes = getDynamicPaths({
     dynamicContentPath
 )
 
-const PRIMARY_HOSTS = `loc.example-website.com`
-
 export default {
     // ? The env Property: https://nuxtjs.org/api/configuration-env/
-
-    render: {
-        csp: {
-            reportOnly: true,
-            hashAlgorithm: 'sha256',
-        }
-    },
 
     css: ['@/assets/css/custom.css'],
     env: {
