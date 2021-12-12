@@ -15,19 +15,6 @@ const dynamicRoutes = getDynamicPaths({
 
 export default {
     // ? The env Property: https://nuxtjs.org/api/configuration-env/
-    render: {
-        csp: {
-            hashAlgorithm: 'sha256',
-            policies: {
-                'script-src': [
-                    'https://www.google-analytics.com',
-                    'https://name.example.com'
-                ],
-                'report-uri': ['https://report.example.com/report-csp-violations']
-            },
-            addMeta: true
-        }
-    },
 
     css: ['@/assets/css/custom.css'],
     env: {
